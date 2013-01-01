@@ -166,6 +166,9 @@
   (add-to-list 'flymake-allowed-file-name-masks
            '("\\.py\\'" flymake-pylint-init)))
 
+;-----------------------------------------------------------------
+; Flymake
+;-----------------------------------------------------------------
 (add-hook 'python-mode-hook 'flymake-mode)
 (add-hook 'php-mode-hook 'flymake-mode)
 
@@ -219,3 +222,8 @@
 ; nXhtml
 ;-----------------------------------------------------------------
 (load "/home/ismd/.emacs.d/nxhtml/autostart")
+
+;-----------------------------------------------------------------
+; Show paren mode
+;-----------------------------------------------------------------
+(show-paren-mode)
