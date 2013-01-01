@@ -57,8 +57,8 @@
 ;-----------------------------------------------------------------
 ; Indentation
 ;-----------------------------------------------------------------
-(setq indent-tabs-mode nil)
-(setq tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 (setq c-basic-offset 4)
 (setq sgml-basic-offset 4)
 (setq css-indent-offset 1)
