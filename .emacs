@@ -62,6 +62,7 @@
 (setq c-basic-offset 4)
 (setq sgml-basic-offset 4)
 (setq css-indent-offset 1)
+(setq nxml-child-indent 4)
 
 ;-----------------------------------------------------------------
 ; Scroll one line at a time
@@ -171,8 +172,8 @@
 ;-----------------------------------------------------------------
 ; php-mode
 ;-----------------------------------------------------------------
-(autoload 'php-mode "php-mode.el" "Php mode." t)
-(setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
+;(autoload 'php-mode "php-mode.el" "Php mode." t)
+;(setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
 
 ;-----------------------------------------------------------------
 ; Highlighting line
