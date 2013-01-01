@@ -8,13 +8,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ecb-layout-window-sizes (quote (("left8" (ecb-directories-buffer-name 0.14232209737827714 . 0.2777777777777778) (ecb-sources-buffer-name 0.14232209737827714 . 0.2361111111111111) (ecb-methods-buffer-name 0.14232209737827714 . 0.2916666666666667) (ecb-history-buffer-name 0.14232209737827714 . 0.18055555555555555)))))
+ '(ecb-layout-window-sizes (quote (("left8" (ecb-directories-buffer-name 0.1927710843373494 . 0.2826086956521739) (ecb-sources-buffer-name 0.1927710843373494 . 0.2391304347826087) (ecb-methods-buffer-name 0.1927710843373494 . 0.2826086956521739) (ecb-history-buffer-name 0.1927710843373494 . 0.17391304347826086)))))
  '(ecb-options-version "2.40")
- '(ecb-source-path (quote (("/home/ismd/coding/game/ismd-game" "game"))))
- '(indent-tabs-mode nil)
+ '(ecb-source-path (quote (("/home/ismd/coding/forsdesk" "forsdesk") ("/home/ismd/coding/new.fors-bs.ru" "new.fors-bs.ru") ("/home/ismd/coding/altbanks" "altbanks"))))
+ '(py-shell-name "ipython2" t)
  '(scroll-conservatively 10000)
  '(scroll-step 1)
- '(tab-width 4)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -58,6 +57,8 @@
 ;-----------------------------------------------------------------
 ; Indentation
 ;-----------------------------------------------------------------
+(setq indent-tabs-mode nil)
+(setq tab-width 4)
 (setq c-basic-offset 4)
 (setq sgml-basic-offset 4)
 (setq css-indent-offset 1)
@@ -105,42 +106,43 @@
 ;-----------------------------------------------------------------
 ; iPython
 ;-----------------------------------------------------------------
-;(setq ipython-command "/usr/bin/ipython2")
-;(setq py-shell-name "/usr/bin/ipython2")
-;(setq py-python-command-args '( "--colors" "Linux"))
+(setq ipython-command "/usr/bin/ipython2")
+(setq py-shell-name "/usr/bin/ipython2")
+(setq py-python-command-args '( "--colors" "Linux"))
+;(setq ipython-completion-command-string "print(';'.join(get_ipython().Completer.complete('%s')[1])) #PYTHON-MODE SILENT\n")
 
 ;-----------------------------------------------------------------
 ; python-mode
 ;-----------------------------------------------------------------
-;(autoload 'python-mode "python-mode.el" "Python mode." t)
-;(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
+(autoload 'python-mode "python-mode.el" "Python mode." t)
+(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
 
 ;-----------------------------------------------------------------
 ; pymacs, ropemacs
 ;-----------------------------------------------------------------
-;(require 'pymacs)
-;(setenv "PYMACS_PYTHON" "python2")
-;(pymacs-load "ropemacs" "rope-")
+(require 'pymacs)
+(setenv "PYMACS_PYTHON" "python2")
+(pymacs-load "ropemacs" "rope-")
 
 ;-----------------------------------------------------------------
 ; pylookup
 ;-----------------------------------------------------------------
-;(setq pylookup-dir "~/.emacs.d/pylookup")
-;(add-to-list 'load-path pylookup-dir)
+(setq pylookup-dir "~/.emacs.d/pylookup")
+(add-to-list 'load-path pylookup-dir)
 ;; load pylookup when compile time
-;(eval-when-compile (require 'pylookup))
+(eval-when-compile (require 'pylookup))
 
 ;; set executable file and db file
-;(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
-;(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
+(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
+(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
 
 ;; to speedup, just load it on demand
-;(autoload 'pylookup-lookup "pylookup"
-;  "Lookup SEARCH-TERM in the Python HTML indexes." t)
-;(autoload 'pylookup-update "pylookup"
-;  "Run pylookup-update and create the database at `pylookup-db-file'." t)
+(autoload 'pylookup-lookup "pylookup"
+  "Lookup SEARCH-TERM in the Python HTML indexes." t)
+(autoload 'pylookup-update "pylookup"
+  "Run pylookup-update and create the database at `pylookup-db-file'." t)
 
-;(global-set-key "\C-ch" 'pylookup-lookup)
+(global-set-key "\C-ch" 'pylookup-lookup)
 
 ;-----------------------------------------------------------------
 ; Browser
@@ -151,19 +153,19 @@
 ;-----------------------------------------------------------------
 ; Using flymake with pylint
 ;-----------------------------------------------------------------
-;(when (load "flymake" t)
-;  (defun flymake-pylint-init ()
-;    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-;                       'flymake-create-temp-inplace))
-;       (local-file (file-relative-name
-;                    temp-file
-;                    (file-name-directory buffer-file-name))))
-;      (list "epylint" (list local-file))))
+(when (load "flymake" t)
+  (defun flymake-pylint-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+       (local-file (file-relative-name
+                    temp-file
+                    (file-name-directory buffer-file-name))))
+      (list "epylint" (list local-file))))
 
-;  (add-to-list 'flymake-allowed-file-name-masks
-;           '("\\.py\\'" flymake-pylint-init)))
+  (add-to-list 'flymake-allowed-file-name-masks
+           '("\\.py\\'" flymake-pylint-init)))
 
-;(add-hook 'python-mode-hook 'flymake-mode)
+(add-hook 'python-mode-hook 'flymake-mode)
 
 ;-----------------------------------------------------------------
 ; php-mode
@@ -172,6 +174,31 @@
 (setq auto-mode-alist (append '(("/*.\.php[345]?$" . php-mode)) auto-mode-alist))
 
 ;-----------------------------------------------------------------
-; emhacks
+; Highlighting line
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/emhacks")
+(global-hl-line-mode)
+
+;-----------------------------------------------------------------
+; Cursor type
+;-----------------------------------------------------------------
+(setq-default cursor-type 'bar)
+
+;-----------------------------------------------------------------
+; Icomplete mode
+;-----------------------------------------------------------------
+(icomplete-mode)
+
+;-----------------------------------------------------------------
+; ido
+;-----------------------------------------------------------------
+(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+
+(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
+(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
+
+(ido-mode)
+
+;-----------------------------------------------------------------
+; Vertical completions
+;-----------------------------------------------------------------
+(setq completions-format 'vertical)
