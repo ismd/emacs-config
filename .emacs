@@ -10,6 +10,7 @@
  ;; If there is more than one, they won't work right.
  '(ecb-layout-window-sizes (quote (("left8" (ecb-directories-buffer-name 0.1927710843373494 . 0.2826086956521739) (ecb-sources-buffer-name 0.1927710843373494 . 0.2391304347826087) (ecb-methods-buffer-name 0.1927710843373494 . 0.2826086956521739) (ecb-history-buffer-name 0.1927710843373494 . 0.17391304347826086)))))
  '(ecb-options-version "2.40")
+ '(ecb-source-path (quote (("/home/ismd/coding/game/ismd-game" "game"))))
  '(py-shell-name "ipython2" t)
  '(scroll-conservatively 10000)
  '(scroll-step 1)
