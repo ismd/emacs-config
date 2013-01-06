@@ -38,9 +38,11 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;-----------------------------------------------------------------
-; cedet
+; CEDET
 ;-----------------------------------------------------------------
 (load-file "/usr/share/emacs/site-lisp/cedet/common/cedet.el")
+(global-ede-mode 1)
+(semantic-load-enable-gaudy-code-helpers)
 
 ;-----------------------------------------------------------------
 ; ECB
@@ -253,3 +255,11 @@
              "~/.emacs.d/elpa/php+-mode-20121129.1452")
 (require 'php+-mode)
 (php+-mode-setup)
+
+;-----------------------------------------------------------------
+; Tabbar
+;-----------------------------------------------------------------
+(add-to-list 'load-path
+             "~/.emacs.d/elpa/tabbar-20110824.1439")
+(require 'tabbar)
+(tabbar-mode)
