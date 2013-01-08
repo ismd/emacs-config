@@ -281,7 +281,7 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 (setq org-directory "~/Документы/org")
-(setq org-agenda-files '("~/Документы/org"))
+(setq org-agenda-files (list org-directory))
 
 (setq org-todo-keywords
       '((sequence "TODO" "WAIT" "DONE")))
