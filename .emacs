@@ -54,11 +54,11 @@
 ;-----------------------------------------------------------------
 ; Color theme
 ;-----------------------------------------------------------------
-;(add-to-list 'load-path
-;             "~/.emacs.d/elpa/color-theme-20080305.834")
-;(require 'color-theme)
-;(color-theme-initialize)
-;(color-theme-charcoal-black)
+(add-to-list 'load-path
+             "~/.emacs.d/elpa/color-theme-20080305.834")
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-charcoal-black)
 
 ;-----------------------------------------------------------------
 ; Indentation
