@@ -270,9 +270,18 @@
 (column-number-mode)
 
 ;-----------------------------------------------------------------
-; Org mode global keys
+; Org mode
 ;-----------------------------------------------------------------
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
+
+(setq org-directory "~/Документы/org")
+(setq org-agenda-files '("~/Документы/org"))
+
+(setq org-todo-keywords
+      '((sequence "TODO" "WAIT" "DONE")))
+
+(setq org-todo-keyword-faces
+      '(("WAIT". (:foreground "orange" :weight bold))))
