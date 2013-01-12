@@ -63,7 +63,7 @@
              "~/.emacs.d/elpa/color-theme-20080305.834")
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-charcoal-black)
+(color-theme-gtk-ide)
 
 ;-----------------------------------------------------------------
 ; Indentation
