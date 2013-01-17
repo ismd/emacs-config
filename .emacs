@@ -187,7 +187,7 @@
 ; Flymake
 ;-----------------------------------------------------------------
 (add-hook 'python-mode-hook 'flymake-mode)
-(add-hook 'php+-mode-hook 'flymake-mode)
+;(add-hook 'php+-mode-hook 'flymake-mode)
 
 ;-----------------------------------------------------------------
 ; Highlighting line
