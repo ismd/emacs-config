@@ -64,8 +64,7 @@
 ;-----------------------------------------------------------------
 ; Color theme
 ;-----------------------------------------------------------------
-(add-to-list 'load-path
-             "~/.emacs.d/elpa/color-theme-20080305.834")
+(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-20080305.834")
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-gtk-ide)
@@ -248,8 +247,7 @@
 ;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
-(add-to-list 'load-path
-             "~/.emacs.d/elpa/yasnippet-20130218.2229")
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20130218.2229")
 (require 'yasnippet)
 
 (yas--initialize)
@@ -260,16 +258,14 @@
 ;-----------------------------------------------------------------
 ; php+-mode
 ;-----------------------------------------------------------------
-(add-to-list 'load-path
-             "~/.emacs.d/elpa/php+-mode-20121129.1452")
+(add-to-list 'load-path "~/.emacs.d/elpa/php+-mode-20121129.1452")
 (require 'php+-mode)
 (php+-mode-setup)
 
 ;-----------------------------------------------------------------
 ; Tabbar
 ;-----------------------------------------------------------------
-(add-to-list 'load-path
-             "~/.emacs.d/elpa/tabbar-20110824.1439")
+(add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20110824.1439")
 (require 'tabbar)
 (tabbar-mode)
 
@@ -321,6 +317,5 @@
 
 ;-----------------------------------------------------------------
 ;-----------------------------------------------------------------
-(add-to-list 'load-path
-             "~/.emacs.d/elpa/js2-mode-20130307.2012")
+(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20130307.2012")
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
