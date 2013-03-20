@@ -20,7 +20,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(tabbar-button-highlight ((t (:inherit tabbar-button))))
+ '(tabbar-default ((t (:inherit variable-pitch :background "gray82" :foreground "gray50" :height 0.8))))
+ '(tabbar-highlight ((t nil)))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "white" :foreground "blue" :box (:line-width 1 :color "black")))))
+ '(tabbar-separator ((t (:inherit tabbar-default :height 0.2))))
+ '(tabbar-unselected ((t (:inherit tabbar-default :background "gray72" :foreground "black" :box (:line-width 1 :color "black"))))))
 
 ;-----------------------------------------------------------------
 ; Inhibit startup screen
@@ -244,11 +249,11 @@
 ; Yasnippet
 ;-----------------------------------------------------------------
 (add-to-list 'load-path
-             "~/.emacs.d/elpa/yasnippet-20121225.430")
+             "~/.emacs.d/elpa/yasnippet-20130218.2229")
 (require 'yasnippet)
 
 (yas--initialize)
-(yas/load-directory "~/.emacs.d/elpa/yasnippet-20121225.430/snippets")
+(yas/load-directory "~/.emacs.d/elpa/yasnippet-20130218.2229/snippets")
 
 (yas-global-mode 1)
 
@@ -308,3 +313,14 @@
 (global-set-key [f12] 'ide-skel-toggle-right-view-window)
 (global-set-key [C-next] 'tabbar-backward)
 (global-set-key [C-prior]  'tabbar-forward)
+
+;-----------------------------------------------------------------
+; SqlPlus
+;-----------------------------------------------------------------
+(require 'sqlplus)
+
+;-----------------------------------------------------------------
+;-----------------------------------------------------------------
+(add-to-list 'load-path
+             "~/.emacs.d/elpa/js2-mode-20130307.2012")
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
