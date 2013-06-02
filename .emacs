@@ -247,11 +247,11 @@
 ;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20130218.2229")
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20130505.2115")
 (require 'yasnippet)
 
 (yas--initialize)
-(yas/load-directory "~/.emacs.d/elpa/yasnippet-20130218.2229/snippets")
+(yas/load-directory "~/.emacs.d/elpa/yasnippet-20130505.2115/snippets")
 
 (yas-global-mode 1)
 
@@ -317,5 +317,5 @@
 
 ;-----------------------------------------------------------------
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20130307.2012")
+(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20130510.1955")
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
