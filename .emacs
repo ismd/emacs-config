@@ -125,27 +125,6 @@
 (prefer-coding-system 'utf-8)
 
 ;-----------------------------------------------------------------
-; iPython
-;-----------------------------------------------------------------
-;(setq ipython-command "/usr/bin/ipython2")
-;(setq py-shell-name "/usr/bin/ipython2")
-;(setq py-python-command-args '( "--colors" "Linux"))
-;;(setq ipython-completion-command-string "print(';'.join(get_ipython().Completer.complete('%s')[1])) #PYTHON-MODE SILENT\n")
-
-;-----------------------------------------------------------------
-; python-mode
-;-----------------------------------------------------------------
-;(autoload 'python-mode "python-mode.el" "Python mode." t)
-;(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
-
-;-----------------------------------------------------------------
-; pymacs, ropemacs
-;-----------------------------------------------------------------
-(require 'pymacs)
-(setenv "PYMACS_PYTHON" "python2")
-;(pymacs-load "ropemacs" "rope-")
-
-;-----------------------------------------------------------------
 ; pylookup
 ;-----------------------------------------------------------------
 ;(setq pylookup-dir "~/.emacs.d/pylookup")
@@ -319,4 +298,4 @@
 ;-----------------------------------------------------------------
 ; Emacs for python
 ;-----------------------------------------------------------------
-(load-file "~/.emacs.d/emacs-for-python/epy-init.el")
+(load-file "/usr/share/emacs/site-lisp/emacs-for-python/epy-init.el")
