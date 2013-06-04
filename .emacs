@@ -8,10 +8,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ecb-layout-window-sizes (quote (("left8" (ecb-directories-buffer-name 0.1927710843373494 . 0.2826086956521739) (ecb-sources-buffer-name 0.1927710843373494 . 0.2391304347826087) (ecb-methods-buffer-name 0.1927710843373494 . 0.2826086956521739) (ecb-history-buffer-name 0.1927710843373494 . 0.17391304347826086)))))
+ '(ecb-layout-window-sizes (quote (("left8" (ecb-directories-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-sources-buffer-name 0.21084337349397592 . 0.2391304347826087) (ecb-methods-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-history-buffer-name 0.21084337349397592 . 0.17391304347826086)))))
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
- '(py-shell-name "ipython2" t)
  '(scroll-conservatively 10000)
  '(scroll-step 1)
  '(tool-bar-mode nil))
@@ -128,48 +127,47 @@
 ;-----------------------------------------------------------------
 ; iPython
 ;-----------------------------------------------------------------
-(setq ipython-command "/usr/bin/ipython2")
-(setq py-shell-name "/usr/bin/ipython2")
-(setq py-python-command-args '( "--colors" "Linux"))
-;(setq ipython-completion-command-string "print(';'.join(get_ipython().Completer.complete('%s')[1])) #PYTHON-MODE SILENT\n")
+;(setq ipython-command "/usr/bin/ipython2")
+;(setq py-shell-name "/usr/bin/ipython2")
+;(setq py-python-command-args '( "--colors" "Linux"))
+;;(setq ipython-completion-command-string "print(';'.join(get_ipython().Completer.complete('%s')[1])) #PYTHON-MODE SILENT\n")
 
 ;-----------------------------------------------------------------
 ; python-mode
 ;-----------------------------------------------------------------
-(autoload 'python-mode "python-mode.el" "Python mode." t)
-(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
+;(autoload 'python-mode "python-mode.el" "Python mode." t)
+;(setq auto-mode-alist (append '(("/*.\.py$" . python-mode)) auto-mode-alist))
 
 ;-----------------------------------------------------------------
 ; pymacs, ropemacs
 ;-----------------------------------------------------------------
 (require 'pymacs)
 (setenv "PYMACS_PYTHON" "python2")
-(pymacs-load "ropemacs" "rope-")
+;(pymacs-load "ropemacs" "rope-")
 
 ;-----------------------------------------------------------------
 ; pylookup
 ;-----------------------------------------------------------------
-(setq pylookup-dir "~/.emacs.d/pylookup")
-(add-to-list 'load-path pylookup-dir)
+;(setq pylookup-dir "~/.emacs.d/pylookup")
+;(add-to-list 'load-path pylookup-dir)
 ;; load pylookup when compile time
-(eval-when-compile (require 'pylookup))
+;(eval-when-compile (require 'pylookup))
 
 ;; set executable file and db file
-(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
-(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
+;(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
+;(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
 
 ;; to speedup, just load it on demand
-(autoload 'pylookup-lookup "pylookup"
-  "Lookup SEARCH-TERM in the Python HTML indexes." t)
-(autoload 'pylookup-update "pylookup"
-  "Run pylookup-update and create the database at `pylookup-db-file'." t)
+;(autoload 'pylookup-lookup "pylookup"
+;  "Lookup SEARCH-TERM in the Python HTML indexes." t)
+;(autoload 'pylookup-update "pylookup"
+;  "Run pylookup-update and create the database at `pylookup-db-file'." t)
 
-(global-set-key "\C-ch" 'pylookup-lookup)
+;(global-set-key "\C-ch" 'pylookup-lookup)
 
 ;-----------------------------------------------------------------
 ; Browser
 ;-----------------------------------------------------------------
-;(setq browse-url-browser-function 'w3m-browse-url)
 (setq browse-url-default-browser "firefox")
 
 ;-----------------------------------------------------------------
@@ -179,19 +177,17 @@
   (defun flymake-pylint-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
                        'flymake-create-temp-inplace))
-       (local-file (file-relative-name
-                    temp-file
-                    (file-name-directory buffer-file-name))))
-      (list "epylint" (list local-file))))
+      (local-file (file-relative-name
+                   temp-file
+                   (file-name-directory buffer-file-name))))
+    (list "epylint2" (list local-file))))
 
-  (add-to-list 'flymake-allowed-file-name-masks
-           '("\\.py\\'" flymake-pylint-init)))
+(add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pylint-init)))
 
 ;-----------------------------------------------------------------
 ; Flymake
 ;-----------------------------------------------------------------
 (add-hook 'python-mode-hook 'flymake-mode)
-;(add-hook 'php+-mode-hook 'flymake-mode)
 
 ;-----------------------------------------------------------------
 ; Highlighting line
@@ -247,13 +243,12 @@
 ;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20130505.2115")
-(require 'yasnippet)
+;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20130505.2115")
+;(require 'yasnippet)
+;(yas-global-mode 1)
 
-(yas--initialize)
-(yas/load-directory "~/.emacs.d/elpa/yasnippet-20130505.2115/snippets")
-
-(yas-global-mode 1)
+;(yas--initialize)
+;(yas/load-directory "~/.emacs.d/elpa/yasnippet-20130505.2115/snippets")
 
 ;-----------------------------------------------------------------
 ; php+-mode
@@ -316,6 +311,12 @@
 (require 'sqlplus)
 
 ;-----------------------------------------------------------------
+; js2-mode
 ;-----------------------------------------------------------------
 (add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20130510.1955")
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;-----------------------------------------------------------------
+; Emacs for python
+;-----------------------------------------------------------------
+(load-file "~/.emacs.d/emacs-for-python/epy-init.el")
