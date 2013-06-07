@@ -8,7 +8,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ecb-layout-window-sizes (quote (("left8" (ecb-directories-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-sources-buffer-name 0.21084337349397592 . 0.2391304347826087) (ecb-methods-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-history-buffer-name 0.21084337349397592 . 0.17391304347826086)))))
+ '(ecb-layout-window-sizes (quote (("leftright-analyse" (ecb-directories-buffer-name 0.21693121693121692 . 0.37735849056603776) (ecb-sources-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-history-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-methods-buffer-name 0.20105820105820105 . 0.49056603773584906) (ecb-analyse-buffer-name 0.20105820105820105 . 0.49056603773584906)) ("left8" (ecb-directories-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-sources-buffer-name 0.21084337349397592 . 0.2391304347826087) (ecb-methods-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-history-buffer-name 0.21084337349397592 . 0.17391304347826086)))))
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(scroll-conservatively 10000)
@@ -243,6 +243,9 @@
 (require 'tabbar)
 (tabbar-mode)
 
+(global-set-key [C-next] 'tabbar-backward)
+(global-set-key [C-prior]  'tabbar-forward)
+
 ;-----------------------------------------------------------------
 ; Size indication mode
 ;-----------------------------------------------------------------
@@ -281,8 +284,6 @@
 (global-set-key [f10] 'ide-skel-toggle-left-view-window)
 (global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
 (global-set-key [f12] 'ide-skel-toggle-right-view-window)
-(global-set-key [C-next] 'tabbar-backward)
-(global-set-key [C-prior]  'tabbar-forward)
 
 ;-----------------------------------------------------------------
 ; SqlPlus
@@ -299,3 +300,11 @@
 ; Emacs for python
 ;-----------------------------------------------------------------
 (load-file "/usr/share/emacs/site-lisp/emacs-for-python/epy-init.el")
+
+;-----------------------------------------------------------------
+; Switching between windows
+;-----------------------------------------------------------------
+(global-set-key [M-left] 'windmove-left)
+(global-set-key [M-right] 'windmove-right)
+(global-set-key [M-up] 'windmove-up)
+(global-set-key [M-down] 'windmove-down)
