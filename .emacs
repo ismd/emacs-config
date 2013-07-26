@@ -125,48 +125,9 @@
 (prefer-coding-system 'utf-8)
 
 ;-----------------------------------------------------------------
-; pylookup
-;-----------------------------------------------------------------
-;(setq pylookup-dir "~/.emacs.d/pylookup")
-;(add-to-list 'load-path pylookup-dir)
-;; load pylookup when compile time
-;(eval-when-compile (require 'pylookup))
-
-;; set executable file and db file
-;(setq pylookup-program (concat pylookup-dir "/pylookup.py"))
-;(setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
-
-;; to speedup, just load it on demand
-;(autoload 'pylookup-lookup "pylookup"
-;  "Lookup SEARCH-TERM in the Python HTML indexes." t)
-;(autoload 'pylookup-update "pylookup"
-;  "Run pylookup-update and create the database at `pylookup-db-file'." t)
-
-;(global-set-key "\C-ch" 'pylookup-lookup)
-
-;-----------------------------------------------------------------
 ; Browser
 ;-----------------------------------------------------------------
 (setq browse-url-default-browser "firefox")
-
-;-----------------------------------------------------------------
-; Using flymake with pylint
-;-----------------------------------------------------------------
-(when (load "flymake" t)
-  (defun flymake-pylint-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-      (local-file (file-relative-name
-                   temp-file
-                   (file-name-directory buffer-file-name))))
-    (list "epylint2" (list local-file))))
-
-(add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-pylint-init)))
-
-;-----------------------------------------------------------------
-; Flymake
-;-----------------------------------------------------------------
-(add-hook 'python-mode-hook 'flymake-mode)
 
 ;-----------------------------------------------------------------
 ; Highlighting line
@@ -220,14 +181,29 @@
 (show-paren-mode)
 
 ;-----------------------------------------------------------------
+; Dash
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/elpa/dash-20130712.2307")
+(require 'dash)
+
+;-----------------------------------------------------------------
+; S
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/elpa/s-20130617.1851")
+(require 's)
+
+;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
-;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20130505.2115")
-;(require 'yasnippet)
-;(yas-global-mode 1)
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
+(require 'yasnippet)
+(yas/global-mode 1)
 
-;(yas--initialize)
-;(yas/load-directory "~/.emacs.d/elpa/yasnippet-20130505.2115/snippets")
+(add-to-list 'load-path "~/.emacs.d/elpa/angular-snippets-20130505.1446")
+(require 'angular-snippets)
+
+(eval-after-load "sgml-mode"
+  '(define-key html-mode-map (kbd "C-c C-d") 'ng-snip-show-docs-at-point))
 
 ;-----------------------------------------------------------------
 ; php+-mode
@@ -293,13 +269,8 @@
 ;-----------------------------------------------------------------
 ; js2-mode
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20130510.1955")
+(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20130725.125")
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
-;-----------------------------------------------------------------
-; Emacs for python
-;-----------------------------------------------------------------
-(load-file "/usr/share/emacs/site-lisp/emacs-for-python/epy-init.el")
 
 ;-----------------------------------------------------------------
 ; Switching between windows
