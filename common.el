@@ -181,36 +181,11 @@
 (show-paren-mode)
 
 ;-----------------------------------------------------------------
-; Dash
-;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/dash-20130712.2307")
-(require 'dash)
-
-;-----------------------------------------------------------------
-; S
-;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/s-20130617.1851")
-(require 's)
-
-;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
 (require 'yasnippet)
 (yas/global-mode 1)
-
-(add-to-list 'load-path "~/.emacs.d/elpa/angular-snippets-20130505.1446")
-(require 'angular-snippets)
-
-(eval-after-load "sgml-mode"
-  '(define-key html-mode-map (kbd "C-c C-d") 'ng-snip-show-docs-at-point))
-
-;-----------------------------------------------------------------
-; php+-mode
-;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/php+-mode-20121129.1452")
-(require 'php+-mode)
-(php+-mode-setup)
 
 ;-----------------------------------------------------------------
 ; Tabbar
@@ -260,17 +235,6 @@
 (global-set-key [f10] 'ide-skel-toggle-left-view-window)
 (global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
 (global-set-key [f12] 'ide-skel-toggle-right-view-window)
-
-;-----------------------------------------------------------------
-; SqlPlus
-;-----------------------------------------------------------------
-(require 'sqlplus)
-
-;-----------------------------------------------------------------
-; js2-mode
-;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20130725.125")
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;-----------------------------------------------------------------
 ; Switching between windows
