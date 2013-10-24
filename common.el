@@ -50,9 +50,9 @@
 ;-----------------------------------------------------------------
 ; CEDET
 ;-----------------------------------------------------------------
-(load-file "/usr/share/emacs/site-lisp/cedet/common/cedet.el")
-(global-ede-mode 1)
-(semantic-load-enable-gaudy-code-helpers)
+;(load-file "/usr/share/emacs/site-lisp/cedet/common/cedet.el")
+;(global-ede-mode 1)
+;(semantic-load-enable-gaudy-code-helpers)
 
 ;-----------------------------------------------------------------
 ; ECB
