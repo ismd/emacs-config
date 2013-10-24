@@ -57,8 +57,8 @@
 ;-----------------------------------------------------------------
 ; ECB
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
-(require 'ecb)
+;(add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
+;(require 'ecb)
 
 ;-----------------------------------------------------------------
 ; Color theme
@@ -173,7 +173,7 @@
 ;-----------------------------------------------------------------
 ; nXhtml
 ;-----------------------------------------------------------------
-(load "~/.emacs.d/nxhtml/autostart")
+;(load "~/.emacs.d/nxhtml/autostart")
 
 ;-----------------------------------------------------------------
 ; Show paren mode
@@ -227,14 +227,14 @@
 ;-----------------------------------------------------------------
 ; Ide Skel
 ;-----------------------------------------------------------------
-(require 'ide-skel)
-(partial-completion-mode)
+;(require 'ide-skel)
+;(partial-completion-mode)
 
-(global-set-key [f4] 'ide-skel-proj-find-files-by-regexp)
-(global-set-key [f5] 'ide-skel-proj-grep-files-by-regexp)
-(global-set-key [f10] 'ide-skel-toggle-left-view-window)
-(global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
-(global-set-key [f12] 'ide-skel-toggle-right-view-window)
+;(global-set-key [f4] 'ide-skel-proj-find-files-by-regexp)
+;(global-set-key [f5] 'ide-skel-proj-grep-files-by-regexp)
+;(global-set-key [f10] 'ide-skel-toggle-left-view-window)
+;(global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
+;(global-set-key [f12] 'ide-skel-toggle-right-view-window)
 
 ;-----------------------------------------------------------------
 ; Switching between windows
