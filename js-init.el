@@ -13,14 +13,14 @@
 ;-----------------------------------------------------------------
 ; S
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/s-20130617.1851")
+(add-to-list 'load-path "~/.emacs.d/elpa/s-20130905.558")
 (require 's)
 
 ;-----------------------------------------------------------------
 ; angular-snippets
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/angular-snippets-20130505.1446")
-(require 'angular-snippets)
+;(add-to-list 'load-path "~/.emacs.d/elpa/angular-snippets-20130505.1446")
+;(require 'angular-snippets)
 
 (eval-after-load "sgml-mode"
   '(define-key html-mode-map (kbd "C-c C-d") 'ng-snip-show-docs-at-point))
