@@ -190,7 +190,7 @@
 ;-----------------------------------------------------------------
 ; Tabbar
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20131018.1112")
+(add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20131020.1253")
 (require 'tabbar)
 (tabbar-mode)
 
