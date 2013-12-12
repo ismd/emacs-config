@@ -13,7 +13,8 @@
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(scroll-conservatively 10000)
  '(scroll-step 1)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(ecb-tip-of-the-day nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -34,7 +35,7 @@
 ;-----------------------------------------------------------------
 ; Default font
 ;-----------------------------------------------------------------
-(set-default-font "Dejavu Sans Mono-8")
+(set-default-font "Dejavu Sans Mono-10")
 
 ;-----------------------------------------------------------------
 ; Y or N instead of YES or NO
@@ -48,25 +49,23 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;-----------------------------------------------------------------
-; CEDET
-;-----------------------------------------------------------------
-;(load-file "/usr/share/emacs/site-lisp/cedet/common/cedet.el")
-;(global-ede-mode 1)
-;(semantic-load-enable-gaudy-code-helpers)
-
-;-----------------------------------------------------------------
 ; ECB
 ;-----------------------------------------------------------------
-;(add-to-list 'load-path "/usr/share/emacs/site-lisp/ecb")
-;(require 'ecb)
+(require 'ecb)
 
 ;-----------------------------------------------------------------
 ; Color theme
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-20080305.834")
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-gtk-ide)
+;(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-20080305.834")
+;(require 'color-theme)
+;(color-theme-initialize)
+;(color-theme-gtk-ide)
+
+;-----------------------------------------------------------------
+; Sublime theme
+;-----------------------------------------------------------------
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/sublime-themes-20131203.623")
+(load-theme 'spolsky t)
 
 ;-----------------------------------------------------------------
 ; Indentation
@@ -132,8 +131,8 @@
 ;-----------------------------------------------------------------
 ; Highlighting line
 ;-----------------------------------------------------------------
-(global-hl-line-mode)
-(set-face-background 'hl-line "#EEEEEE")
+;(global-hl-line-mode)
+;(set-face-background 'hl-line "#EEEEEE")
 
 ;-----------------------------------------------------------------
 ; Cursor type
@@ -164,6 +163,7 @@
 ; Linum mode
 ;-----------------------------------------------------------------
 (global-linum-mode)
+(setq linum-format " %3i ")
 
 ;-----------------------------------------------------------------
 ; Which function
@@ -190,7 +190,7 @@
 ;-----------------------------------------------------------------
 ; Tabbar
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20131020.1253")
+(add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20131106.1524")
 (require 'tabbar)
 (tabbar-mode)
 
