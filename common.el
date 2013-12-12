@@ -8,13 +8,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ac-auto-show-menu 0.4)
+ '(ac-quick-help-delay 0.5)
  '(ecb-layout-window-sizes (quote (("leftright-analyse" (ecb-directories-buffer-name 0.21693121693121692 . 0.37735849056603776) (ecb-sources-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-history-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-methods-buffer-name 0.20105820105820105 . 0.49056603773584906) (ecb-analyse-buffer-name 0.20105820105820105 . 0.49056603773584906)) ("left8" (ecb-directories-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-sources-buffer-name 0.21084337349397592 . 0.2391304347826087) (ecb-methods-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-history-buffer-name 0.21084337349397592 . 0.17391304347826086)))))
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
+ '(ecb-tip-of-the-day nil)
  '(scroll-conservatively 10000)
  '(scroll-step 1)
- '(tool-bar-mode nil)
- '(ecb-tip-of-the-day nil))
+ '(tool-bar-mode nil)) 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -64,7 +66,7 @@
 ;-----------------------------------------------------------------
 ; Sublime theme
 ;-----------------------------------------------------------------
-(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/sublime-themes-20131203.623")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/packages/sublime-themes")
 (load-theme 'spolsky t)
 
 ;-----------------------------------------------------------------
@@ -126,7 +128,9 @@
 ;-----------------------------------------------------------------
 ; Browser
 ;-----------------------------------------------------------------
-(setq browse-url-default-browser "firefox")
+(setq browse-url-default-browser "chromium")
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium")
 
 ;-----------------------------------------------------------------
 ; Highlighting line
@@ -183,14 +187,13 @@
 ;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
 (require 'yasnippet)
 (yas/global-mode 1)
 
 ;-----------------------------------------------------------------
 ; Tabbar
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20131106.1524")
+(add-to-list 'load-path "~/.emacs.d/packages/tabbar")
 (require 'tabbar)
 (tabbar-mode)
 
@@ -243,3 +246,12 @@
 (global-set-key [M-right] 'windmove-right)
 (global-set-key [M-up] 'windmove-up)
 (global-set-key [M-down] 'windmove-down)
+
+;-----------------------------------------------------------------
+; Auto complete
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/popup")
+(add-to-list 'load-path "~/.emacs.d/packages/auto-complete")
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)

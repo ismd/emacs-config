@@ -7,20 +7,26 @@
 ;-----------------------------------------------------------------
 ; Dash
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/dash-20131030.2119")
 (require 'dash)
 
 ;-----------------------------------------------------------------
 ; S
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/s-20130905.558")
+(add-to-list 'load-path "~/.emacs.d/packages/s")
 (require 's)
-
-;-----------------------------------------------------------------
-; angular-snippets
-;-----------------------------------------------------------------
-;(add-to-list 'load-path "~/.emacs.d/elpa/angular-snippets-20130505.1446")
-;(require 'angular-snippets)
 
 (eval-after-load "sgml-mode"
   '(define-key html-mode-map (kbd "C-c C-d") 'ng-snip-show-docs-at-point))
+
+;-----------------------------------------------------------------
+; ac-js2
+;-----------------------------------------------------------------
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(setq ac-js2-evaluate-calls t)
+
+;-----------------------------------------------------------------
+; Skewer mode
+;-----------------------------------------------------------------
+(add-hook 'js2-mode-hook 'skewer-mode)
+(add-hook 'css-mode-hook 'skewer-css-mode)
+(add-hook 'html-mode-hook 'skewer-html-mode)

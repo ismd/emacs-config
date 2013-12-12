@@ -1,6 +1,6 @@
 ;-----------------------------------------------------------------
 ; php+-mode
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/php+-mode-20121129.1452")
+(add-to-list 'load-path "~/.emacs.d/packages/php+-mode")
 (require 'php+-mode)
 (php+-mode-setup)
