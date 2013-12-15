@@ -3,8 +3,3 @@
 (load-file "~/src/emacs-config/js-init.el")
 (load-file "~/src/emacs-config/python-init.el")
 (load-file "~/src/emacs-config/cpp-init.el")
-
-;-----------------------------------------------------------------
-; SqlPlus
-;-----------------------------------------------------------------
-;(require 'sqlplus)
