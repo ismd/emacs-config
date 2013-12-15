@@ -53,7 +53,16 @@
 ;-----------------------------------------------------------------
 ; ECB
 ;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/ecb")
 (require 'ecb)
+
+;-----------------------------------------------------------------
+; e2wm
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/window-layout")
+(require 'window-layout)
+(add-to-list 'load-path "~/.emacs.d/packages/e2wm")
+(require 'e2wm)
 
 ;-----------------------------------------------------------------
 ; Color theme
@@ -255,3 +264,4 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+(add-to-list 'ac-modes 'php+-mode)
