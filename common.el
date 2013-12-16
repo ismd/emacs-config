@@ -266,3 +266,8 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (add-to-list 'ac-modes 'php+-mode)
+
+;-----------------------------------------------------------------
+; Inserting Brackets by Pairs
+;-----------------------------------------------------------------
+(electric-pair-mode 1)
