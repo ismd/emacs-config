@@ -10,13 +10,21 @@
  ;; If there is more than one, they won't work right.
  '(ac-auto-show-menu 0.4)
  '(ac-quick-help-delay 0.5)
- '(ecb-layout-window-sizes (quote (("leftright-analyse" (ecb-directories-buffer-name 0.21693121693121692 . 0.37735849056603776) (ecb-sources-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-history-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-methods-buffer-name 0.20105820105820105 . 0.49056603773584906) (ecb-analyse-buffer-name 0.20105820105820105 . 0.49056603773584906)) ("left8" (ecb-directories-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-sources-buffer-name 0.21084337349397592 . 0.2391304347826087) (ecb-methods-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-history-buffer-name 0.21084337349397592 . 0.17391304347826086)))))
+ '(ecb-display-default-dir-after-start nil)
+ '(ecb-excluded-directories-regexps (quote ("^\\(CVS\\|\\.\\|\\.\\.\\)$")))
+ '(ecb-kill-buffer-clears-history (quote auto))
+ '(ecb-layout-name "leftright2")
+ '(ecb-layout-window-sizes (quote (("leftright2" (ecb-directories-buffer-name 0.0894915254237288 . 0.4925373134328358) (ecb-sources-buffer-name 0.0894915254237288 . 0.4925373134328358) (ecb-methods-buffer-name 0.17372881355932204 . 0.40298507462686567) (ecb-history-buffer-name 0.17372881355932204 . 0.582089552238806)) ("leftright-analyse" (ecb-directories-buffer-name 0.21693121693121692 . 0.37735849056603776) (ecb-sources-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-history-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-methods-buffer-name 0.20105820105820105 . 0.49056603773584906) (ecb-analyse-buffer-name 0.20105820105820105 . 0.49056603773584906)) ("left8" (ecb-directories-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-sources-buffer-name 0.21084337349397592 . 0.2391304347826087) (ecb-methods-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-history-buffer-name 0.21084337349397592 . 0.17391304347826086)))))
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
+ '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
  '(ecb-tip-of-the-day nil)
  '(scroll-conservatively 10000)
  '(scroll-step 1)
- '(tool-bar-mode nil)) 
+ '(tool-bar-mode nil)
+ '(web-mode-code-indent-offset 4)
+ '(web-mode-css-indent-offset 4)
+ '(web-mode-markup-indent-offset 4)) 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,12 +57,6 @@
 ;-----------------------------------------------------------------
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
-
-;-----------------------------------------------------------------
-; ECB
-;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/ecb")
-(require 'ecb)
 
 ;-----------------------------------------------------------------
 ; e2wm
@@ -265,7 +267,11 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
 (add-to-list 'ac-modes 'php+-mode)
+(add-to-list 'ac-modes 'web-mode)
+
+(global-set-key (kbd "C-<tab>") 'auto-complete)
 
 ;-----------------------------------------------------------------
 ; Inserting Brackets by Pairs
@@ -284,3 +290,55 @@
 (autoload 'svn-status "dsvn" "Run `svn status'." t)
 (autoload 'svn-update "dsvn" "Run `svn update'." t)
 (require 'vc-svn)
+
+;-----------------------------------------------------------------
+; Delete selection mode
+;-----------------------------------------------------------------
+(delete-selection-mode 1)
+
+;-----------------------------------------------------------------
+; Prevents from throwing errors
+;-----------------------------------------------------------------
+;(setq stack-trace-on-error t)
+
+;-----------------------------------------------------------------
+; ECB
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/ecb")
+(require 'ecb)
+(ecb-activate)
+
+;-----------------------------------------------------------------
+; epl
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/epl")
+(require 'epl)
+
+;-----------------------------------------------------------------
+; Dash
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/dash")
+(require 'dash)
+
+;-----------------------------------------------------------------
+; S
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/s")
+(require 's)
+
+(eval-after-load "sgml-mode"
+  '(define-key html-mode-map (kbd "C-c C-d") 'ng-snip-show-docs-at-point))
+
+;-----------------------------------------------------------------
+; pkg-info
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/pkg-info")
+(require 'pkg-info)
+
+;-----------------------------------------------------------------
+; Projectile
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/projectile")
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-enable-caching t)

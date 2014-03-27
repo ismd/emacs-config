@@ -2,37 +2,3 @@
 (load-file "~/src/emacs-config/php-init.el")
 (load-file "~/src/emacs-config/js-init.el")
 (load-file "~/src/emacs-config/web-init.el")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ac-auto-show-menu 0.4)
- '(ac-quick-help-delay 0.5)
- '(ecb-excluded-directories-regexps (quote ("^\\(CVS\\|\\.\\|\\.\\.\\)$")))
- '(ecb-expand-methods-switch-off-auto-expand nil)
- '(ecb-kill-buffer-clears-history (quote auto))
- '(ecb-layout-window-sizes (quote (("leftright2" (ecb-directories-buffer-name 0.1652542372881356 . 0.4925373134328358) (ecb-sources-buffer-name 0.1652542372881356 . 0.4925373134328358) (ecb-methods-buffer-name 0.1694915254237288 . 0.6417910447761194) (ecb-history-buffer-name 0.1694915254237288 . 0.34328358208955223)) ("leftright-analyse" (ecb-directories-buffer-name 0.21693121693121692 . 0.37735849056603776) (ecb-sources-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-history-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-methods-buffer-name 0.20105820105820105 . 0.49056603773584906) (ecb-analyse-buffer-name 0.20105820105820105 . 0.49056603773584906)) ("left8" (ecb-directories-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-sources-buffer-name 0.21084337349397592 . 0.2391304347826087) (ecb-methods-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-history-buffer-name 0.21084337349397592 . 0.17391304347826086)))))
- '(ecb-options-version "2.40")
- '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
- '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
- '(ecb-source-path (quote (("/home/ismd/coding/okna_prosvet/trunk/www" "okna_prosvet") ("/" "/") ("/home/ismd/coding/carpix/trunk/www" "carpix") ("/home/ismd/coding/novijsputnik/trunk/design/markup" "novijsputnik"))))
- '(ecb-tip-of-the-day nil)
- '(ecb-vc-enable-support t)
- '(scroll-conservatively 10000)
- '(scroll-step 1)
- '(tool-bar-mode nil)
- '(web-mode-code-indent-offset 4)
- '(web-mode-css-indent-offset 4)
- '(web-mode-markup-indent-offset 4))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(tabbar-button-highlight ((t (:inherit tabbar-button))))
- '(tabbar-default ((t (:inherit variable-pitch :background "gray82" :foreground "gray50" :height 0.8))))
- '(tabbar-highlight ((t nil)))
- '(tabbar-selected ((t (:inherit tabbar-default :background "white" :foreground "blue" :box (:line-width 1 :color "black")))))
- '(tabbar-separator ((t (:inherit tabbar-default :height 0.2))))
- '(tabbar-unselected ((t (:inherit tabbar-default :background "gray72" :foreground "black" :box (:line-width 1 :color "black"))))))
