@@ -352,13 +352,16 @@
 (add-to-list 'load-path "~/.emacs.d/packages/flymake-easy")
 (add-to-list 'load-path "~/.emacs.d/packages/flymake-css")
 (add-to-list 'load-path "~/.emacs.d/packages/flymake-php")
+(add-to-list 'load-path "~/.emacs.d/packages/flymake-python-pyflakes")
 (require 'flymake-easy)
 (require 'flymake-css)
 (require 'flymake-php)
+(require 'flymake-python-pyflakes)
 (add-hook 'css-mode-hook 'flymake-css-load)
 (add-hook 'php-mode-hook 'flymake-php-load)
 (add-hook 'php+-mode-hook 'flymake-php-load)
 (add-hook 'web-mode-hook 'flymake-php-load)
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
 
 ;-----------------------------------------------------------------
 ; Semantic
