@@ -1,2 +1,0 @@
-(load-file "~/src/emacs-config/common.el")
-(load-file "~/src/emacs-config/cpp-init.el")
