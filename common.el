@@ -342,3 +342,47 @@
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-enable-caching t)
+
+;-----------------------------------------------------------------
+; Flymake
+;-----------------------------------------------------------------
+(require 'flymake)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+
+(add-to-list 'load-path "~/.emacs.d/packages/flymake-easy")
+(add-to-list 'load-path "~/.emacs.d/packages/flymake-css")
+(add-to-list 'load-path "~/.emacs.d/packages/flymake-php")
+(require 'flymake-easy)
+(require 'flymake-css)
+(require 'flymake-php)
+(add-hook 'css-mode-hook 'flymake-css-load)
+(add-hook 'php-mode-hook 'flymake-php-load)
+(add-hook 'php+-mode-hook 'flymake-php-load)
+(add-hook 'web-mode-hook 'flymake-php-load)
+
+;-----------------------------------------------------------------
+; Semantic
+;-----------------------------------------------------------------
+(global-semantic-idle-completions-mode t)
+(global-semantic-decoration-mode t)
+(global-semantic-highlight-func-mode t)
+(global-semantic-show-unmatched-syntax-mode t)
+
+(global-ede-mode 1)
+(semantic-mode 1)
+
+(defun newline-and-indent-as-above ()
+  (interactive)
+  (let* ((cline (thing-at-point 'line))
+         (start (string-match "\\`[ \t]+" cline))
+         (end (match-end 0))
+         (indent (substring cline start end )))
+    (newline)
+    (insert indent)))
+ 
+(global-set-key (kbd "<C-return>") 'newline-and-indent-as-above)
+
+;-----------------------------------------------------------------
+; Subword mode
+;-----------------------------------------------------------------
+(subword-mode 1)

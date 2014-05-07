@@ -1,4 +1,2 @@
 (load-file "~/src/emacs-config/common.el")
-(load-file "~/src/emacs-config/php-init.el")
-(load-file "~/src/emacs-config/js-init.el")
 (load-file "~/src/emacs-config/web-init.el")
