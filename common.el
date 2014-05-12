@@ -14,7 +14,6 @@
  '(ecb-excluded-directories-regexps (quote ("^\\(CVS\\|\\.\\|\\.\\.\\)$")))
  '(ecb-kill-buffer-clears-history (quote auto))
  '(ecb-layout-name "leftright2")
- '(ecb-layout-window-sizes (quote (("leftright2" (ecb-directories-buffer-name 0.0894915254237288 . 0.4925373134328358) (ecb-sources-buffer-name 0.0894915254237288 . 0.4925373134328358) (ecb-methods-buffer-name 0.17372881355932204 . 0.40298507462686567) (ecb-history-buffer-name 0.17372881355932204 . 0.582089552238806)) ("leftright-analyse" (ecb-directories-buffer-name 0.21693121693121692 . 0.37735849056603776) (ecb-sources-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-history-buffer-name 0.21693121693121692 . 0.3018867924528302) (ecb-methods-buffer-name 0.20105820105820105 . 0.49056603773584906) (ecb-analyse-buffer-name 0.20105820105820105 . 0.49056603773584906)) ("left8" (ecb-directories-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-sources-buffer-name 0.21084337349397592 . 0.2391304347826087) (ecb-methods-buffer-name 0.21084337349397592 . 0.2826086956521739) (ecb-history-buffer-name 0.21084337349397592 . 0.17391304347826086)))))
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
@@ -352,47 +351,38 @@
 (add-to-list 'load-path "~/.emacs.d/packages/flymake-easy")
 (add-to-list 'load-path "~/.emacs.d/packages/flymake-css")
 (add-to-list 'load-path "~/.emacs.d/packages/flymake-php")
-<<<<<<< HEAD
-(require 'flymake-easy)
-(require 'flymake-css)
-(require 'flymake-php)
-=======
 (add-to-list 'load-path "~/.emacs.d/packages/flymake-python-pyflakes")
 (require 'flymake-easy)
 (require 'flymake-css)
 (require 'flymake-php)
 (require 'flymake-python-pyflakes)
->>>>>>> d8547b20c0690024d8d368ad28077f1b4c00d7c4
 (add-hook 'css-mode-hook 'flymake-css-load)
 (add-hook 'php-mode-hook 'flymake-php-load)
 (add-hook 'php+-mode-hook 'flymake-php-load)
 (add-hook 'web-mode-hook 'flymake-php-load)
-<<<<<<< HEAD
-=======
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
->>>>>>> d8547b20c0690024d8d368ad28077f1b4c00d7c4
 
 ;-----------------------------------------------------------------
 ; Semantic
 ;-----------------------------------------------------------------
-(global-semantic-idle-completions-mode t)
-(global-semantic-decoration-mode t)
-(global-semantic-highlight-func-mode t)
-(global-semantic-show-unmatched-syntax-mode t)
+;; (global-semantic-idle-completions-mode t)
+;; (global-semantic-decoration-mode t)
+;; (global-semantic-highlight-func-mode t)
+;; (global-semantic-show-unmatched-syntax-mode t)
 
-(global-ede-mode 1)
-(semantic-mode 1)
+;; (global-ede-mode 1)
+;; (semantic-mode 1)
 
-(defun newline-and-indent-as-above ()
-  (interactive)
-  (let* ((cline (thing-at-point 'line))
-         (start (string-match "\\`[ \t]+" cline))
-         (end (match-end 0))
-         (indent (substring cline start end )))
-    (newline)
-    (insert indent)))
+;; (defun newline-and-indent-as-above ()
+;;   (interactive)
+;;   (let* ((cline (thing-at-point 'line))
+;;          (start (string-match "\\`[ \t]+" cline))
+;;          (end (match-end 0))
+;;          (indent (substring cline start end )))
+;;     (newline)
+;;     (insert indent)))
  
-(global-set-key (kbd "<C-return>") 'newline-and-indent-as-above)
+;; (global-set-key (kbd "<C-return>") 'newline-and-indent-as-above)
 
 ;-----------------------------------------------------------------
 ; Subword mode
