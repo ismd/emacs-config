@@ -17,9 +17,12 @@
 
 ;(add-hook 'after-init-hook #'global-flycheck-mode)
 
-;(add-to-list 'load-path "~/.emacs.d/packages/web-mode")
 (add-hook 'web-mode-hook 'turn-on-diff-hl-mode)
 (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
+(add-hook 'php-mode-hook 'turn-on-diff-hl-mode)
+(add-hook 'js2-mode-hook 'turn-on-diff-hl-mode)
+
+(global-set-key (kbd "M-q") 'web-mode)
 
 ;-----------------------------------------------------------------
 ; php-mode
