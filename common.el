@@ -44,7 +44,8 @@
 ;-----------------------------------------------------------------
 ; Default font
 ;-----------------------------------------------------------------
-(set-default-font "Dejavu Sans Mono-10")
+;(set-default-font "Dejavu Sans Mono-10")
+(set-default-font "Consolas-10")
 
 ;-----------------------------------------------------------------
 ; Y or N instead of YES or NO
