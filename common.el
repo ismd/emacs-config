@@ -4,10 +4,6 @@
 ; Variables
 ;-----------------------------------------------------------------
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(ac-auto-show-menu 0.4)
  '(ac-quick-help-delay 0.5)
  '(ecb-display-default-dir-after-start nil)
@@ -25,10 +21,6 @@
  '(web-mode-css-indent-offset 4)
  '(web-mode-markup-indent-offset 4)) 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(tabbar-button-highlight ((t (:inherit tabbar-button))))
  '(tabbar-default ((t (:inherit variable-pitch :background "gray82" :foreground "gray50" :height 0.8))))
  '(tabbar-highlight ((t nil)))
@@ -44,8 +36,8 @@
 ;-----------------------------------------------------------------
 ; Default font
 ;-----------------------------------------------------------------
-;(set-default-font "Dejavu Sans Mono-10")
-(set-default-font "Consolas-10")
+(set-default-font "Dejavu Sans Mono-10")
+;(set-default-font "Consolas-10")
 
 ;-----------------------------------------------------------------
 ; Y or N instead of YES or NO
