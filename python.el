@@ -7,17 +7,17 @@
 ;-----------------------------------------------------------------
 ; Jedi
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/epc")
-(add-to-list 'load-path "~/.emacs.d/packages/concurrent")
-(add-to-list 'load-path "~/.emacs.d/packages/deferred")
-(add-to-list 'load-path "~/.emacs.d/packages/ctable")
-(add-to-list 'load-path "~/.emacs.d/packages/python-environment")
+(add-to-list 'load-path "~/.emacs.d/elpa/epc-20140609.2234")
+(add-to-list 'load-path "~/.emacs.d/elpa/concurrent-20140609.1940")
+(add-to-list 'load-path "~/.emacs.d/elpa/deferred-20140816.2205")
+(add-to-list 'load-path "~/.emacs.d/elpa/ctable-20140304.1659")
+(add-to-list 'load-path "~/.emacs.d/elpa/python-environment-20140321.1116")
 
-(add-to-list 'load-path "~/.emacs.d/packages/jedi")
+(add-to-list 'load-path "~/.emacs.d/elpa/jedi-20140321.1323")
 (require 'jedi)
 
 ;; (setq jedi:server-command
-;;       '("python" "~/.emacs.d/packages/jedi/jediepcserver.py"))
+;;       '("python" "~/.emacs.d/elpa/jedi-20140321.1323/jediepcserver.py"))
 
 (add-hook 'python-mode-hook
           (lambda ()
@@ -26,7 +26,3 @@
             (local-set-key "\C-cd" 'jedi:show-doc)
             ;; (local-set-key (kbd "M-SPC") 'jedi:complete)
             (local-set-key (kbd "M-.") 'jedi:goto-definition)))
-
-;; (add-to-list 'load-path "~/.emacs.d/packages/flymake-python-pyflakes")
-;; (require 'flymake-python-pyflakes)
-;; (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)

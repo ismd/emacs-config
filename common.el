@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;-----------------------------------------------------------------
 ; Variables
@@ -14,8 +14,10 @@
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
  '(ecb-tip-of-the-day nil)
+ '(less-css-lessc-options (quote ("--no-color -x")))
  '(scroll-conservatively 10000)
  '(scroll-step 1)
+ '(svn-program "svn")
  '(tool-bar-mode nil)
  '(web-mode-code-indent-offset 4)
  '(web-mode-css-indent-offset 4)
@@ -53,9 +55,9 @@
 ;-----------------------------------------------------------------
 ; e2wm
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/window-layout")
+(add-to-list 'load-path "~/.emacs.d/elpa/window-layout-20140819.2258")
 (require 'window-layout)
-(add-to-list 'load-path "~/.emacs.d/packages/e2wm")
+(add-to-list 'load-path "~/.emacs.d/elpa/e2wm-20140828.2356")
 (require 'e2wm)
 
 ;-----------------------------------------------------------------
@@ -69,8 +71,8 @@
 ;-----------------------------------------------------------------
 ; Sublime theme
 ;-----------------------------------------------------------------
-(add-to-list 'custom-theme-load-path "~/.emacs.d/packages/sublime-themes")
-(load-theme 'spolsky t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/sublime-themes-20140920.500")
+(load-theme 'dorsey t)
 
 ;-----------------------------------------------------------------
 ; Indentation
@@ -190,14 +192,14 @@
 ;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140427.1224")
 (require 'yasnippet)
 (yas/global-mode 1)
 
 ;-----------------------------------------------------------------
 ; Tabbar
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/tabbar")
+(add-to-list 'load-path "~/.emacs.d/elpa/tabbar-20140316.600")
 (require 'tabbar)
 (tabbar-mode)
 
@@ -254,8 +256,8 @@
 ;-----------------------------------------------------------------
 ; Auto complete
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/popup")
-(add-to-list 'load-path "~/.emacs.d/packages/auto-complete")
+(add-to-list 'load-path "~/.emacs.d/elpa/popup-20140815.629")
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20140824.1658")
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
@@ -273,12 +275,13 @@
 ;-----------------------------------------------------------------
 ; Dired+
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/dired+")
+(add-to-list 'load-path "~/.emacs.d/elpa/dired+-20140922.2220")
 (require 'dired+)
 
 ;-----------------------------------------------------------------
 ; Dsvn
 ;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/elpa/dsvn-20130120.1257")
 (autoload 'svn-status "dsvn" "Run `svn status'." t)
 (autoload 'svn-update "dsvn" "Run `svn update'." t)
 (require 'vc-svn)
@@ -296,26 +299,26 @@
 ;-----------------------------------------------------------------
 ; ECB
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/ecb")
+(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
 (require 'ecb)
 (ecb-activate)
 
 ;-----------------------------------------------------------------
 ; epl
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/epl")
+(add-to-list 'load-path "~/.emacs.d/elpa/epl-20140823.609")
 (require 'epl)
 
 ;-----------------------------------------------------------------
 ; Dash
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/dash")
+(add-to-list 'load-path "~/.emacs.d/elpa/dash-20140811.523")
 (require 'dash)
 
 ;-----------------------------------------------------------------
 ; S
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/s")
+(add-to-list 'load-path "~/.emacs.d/elpa/s-20140910.334")
 (require 's)
 
 (eval-after-load "sgml-mode"
@@ -324,13 +327,13 @@
 ;-----------------------------------------------------------------
 ; pkg-info
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/pkg-info")
+(add-to-list 'load-path "~/.emacs.d/elpa/pkg-info-20140610.630")
 (require 'pkg-info)
 
 ;-----------------------------------------------------------------
 ; Projectile
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/projectile")
+(add-to-list 'load-path "~/.emacs.d/elpa/projectile-20140906.1456")
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-enable-caching t)
@@ -338,22 +341,27 @@
 ;-----------------------------------------------------------------
 ; Flymake
 ;-----------------------------------------------------------------
-(require 'flymake)
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+;; (require 'flymake)
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-(add-to-list 'load-path "~/.emacs.d/packages/flymake-easy")
-(add-to-list 'load-path "~/.emacs.d/packages/flymake-css")
-(add-to-list 'load-path "~/.emacs.d/packages/flymake-php")
-(add-to-list 'load-path "~/.emacs.d/packages/flymake-python-pyflakes")
-(require 'flymake-easy)
-(require 'flymake-css)
-(require 'flymake-php)
-(require 'flymake-python-pyflakes)
-(add-hook 'css-mode-hook 'flymake-css-load)
-(add-hook 'php-mode-hook 'flymake-php-load)
-(add-hook 'php+-mode-hook 'flymake-php-load)
-(add-hook 'web-mode-hook 'flymake-php-load)
-(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+;; (add-to-list 'load-path "~/.emacs.d/elpa/flymake-easy-20140818.55")
+;; (add-to-list 'load-path "~/.emacs.d/elpa/flymake-css-20121104.1104")
+;; (add-to-list 'load-path "~/.emacs.d/elpa/flymake-php-20121104.1102")
+;; (add-to-list 'load-path "~/.emacs.d/elpa/flymake-python-pyflakes-20131127.6")
+;; (require 'flymake-easy)
+;; (require 'flymake-css)
+;; (require 'flymake-php)
+;; (require 'flymake-python-pyflakes)
+;; (add-hook 'css-mode-hook 'flymake-css-load)
+;; (add-hook 'php-mode-hook 'flymake-php-load)
+;; (add-hook 'php+-mode-hook 'flymake-php-load)
+;; (add-hook 'web-mode-hook 'flymake-php-load)
+;; (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+
+;-----------------------------------------------------------------
+; Flycheck
+;-----------------------------------------------------------------
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;-----------------------------------------------------------------
 ; Semantic
