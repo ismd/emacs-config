@@ -15,6 +15,8 @@
  '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
  '(ecb-tip-of-the-day nil)
  '(less-css-lessc-options (quote ("--no-color -x")))
+ '(package-archive '(("gnu" . "http://elpa.gnu.org/packages/")
+                     ("melpa" . "http://melpa.milkbox.net/packages/")))
  '(scroll-conservatively 10000)
  '(scroll-step 1)
  '(svn-program "svn")
@@ -38,19 +40,13 @@
 ;-----------------------------------------------------------------
 ; Default font
 ;-----------------------------------------------------------------
-(set-default-font "Dejavu Sans Mono-10")
+(set-frame-font "Dejavu Sans Mono-10")
 ;(set-default-font "Consolas-10")
 
 ;-----------------------------------------------------------------
 ; Y or N instead of YES or NO
 ;-----------------------------------------------------------------
 (fset 'yes-or-no-p 'y-or-n-p)
-
-;-----------------------------------------------------------------
-; ELPA
-;-----------------------------------------------------------------
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;-----------------------------------------------------------------
 ; e2wm
@@ -389,3 +385,8 @@
 ; Subword mode
 ;-----------------------------------------------------------------
 (subword-mode 1)
+
+;-----------------------------------------------------------------
+; Remove trailing whitespace
+;-----------------------------------------------------------------
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
