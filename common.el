@@ -6,14 +6,16 @@
 (custom-set-variables
  '(ac-auto-show-menu 0.4)
  '(ac-quick-help-delay 0.5)
+ '(create-lockfiles nil)
  '(ecb-display-default-dir-after-start nil)
  '(ecb-excluded-directories-regexps (quote ("^\\(CVS\\|\\.\\|\\.\\.\\)$")))
  '(ecb-kill-buffer-clears-history (quote auto))
  '(ecb-layout-name "leftright2")
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
- '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
+ '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|^.flycheck_\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
  '(ecb-tip-of-the-day nil)
+ '(flycheck-temp-prefix ".flycheck")
  '(less-css-lessc-options (quote ("--no-color -x")))
  '(package-archive '(("gnu" . "http://elpa.gnu.org/packages/")
                      ("melpa" . "http://melpa.milkbox.net/packages/")))
@@ -23,7 +25,7 @@
  '(tool-bar-mode nil)
  '(web-mode-code-indent-offset 4)
  '(web-mode-css-indent-offset 4)
- '(web-mode-markup-indent-offset 4)) 
+ '(web-mode-markup-indent-offset 4))
 (custom-set-faces
  '(tabbar-button-highlight ((t (:inherit tabbar-button))))
  '(tabbar-default ((t (:inherit variable-pitch :background "gray82" :foreground "gray50" :height 0.8))))
@@ -378,7 +380,7 @@
 ;;          (indent (substring cline start end )))
 ;;     (newline)
 ;;     (insert indent)))
- 
+
 ;; (global-set-key (kbd "<C-return>") 'newline-and-indent-as-above)
 
 ;-----------------------------------------------------------------
