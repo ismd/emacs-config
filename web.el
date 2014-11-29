@@ -31,7 +31,6 @@
 ;-----------------------------------------------------------------
 ; js2-mode
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/js2-mode-20140405.2057")
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 

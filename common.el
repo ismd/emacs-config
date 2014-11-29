@@ -11,6 +11,13 @@
  '(ecb-excluded-directories-regexps (quote ("^\\(CVS\\|\\.\\|\\.\\.\\)$")))
  '(ecb-kill-buffer-clears-history (quote auto))
  '(ecb-layout-name "leftright2")
+ '(ecb-layout-window-sizes
+   (quote
+    (("leftright2"
+      (ecb-directories-buffer-name 0.09101694915254236 . 0.6440677966101694)
+      (ecb-sources-buffer-name 0.09101694915254236 . 0.3559322033898305)
+      (ecb-methods-buffer-name 0.17101694915254236 . 0.423728813559322)
+      (ecb-history-buffer-name 0.17101694915254236 . 0.576271186440678)))))
  '(ecb-options-version "2.40")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|^.flycheck_\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
@@ -53,10 +60,10 @@
 ;-----------------------------------------------------------------
 ; e2wm
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/window-layout-20140819.2258")
-(require 'window-layout)
-(add-to-list 'load-path "~/.emacs.d/elpa/e2wm-20140828.2356")
-(require 'e2wm)
+;(add-to-list 'load-path "~/.emacs.d/elpa/window-layout-20140819.2258")
+;(require 'window-layout)
+;(add-to-list 'load-path "~/.emacs.d/elpa/e2wm-20140828.2356")
+;(require 'e2wm)
 
 ;-----------------------------------------------------------------
 ; Color theme
@@ -70,7 +77,7 @@
 ; Sublime theme
 ;-----------------------------------------------------------------
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/sublime-themes-20140920.500")
-(load-theme 'dorsey t)
+(load-theme 'wheatgrass t)
 
 ;-----------------------------------------------------------------
 ; Indentation
