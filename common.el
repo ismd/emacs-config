@@ -6,6 +6,7 @@
 (custom-set-variables
  '(ac-auto-show-menu 0.4)
  '(ac-quick-help-delay 0.5)
+ '(company-dabbrev-downcase nil)
  '(create-lockfiles nil)
  '(ecb-display-default-dir-after-start nil)
  '(ecb-excluded-directories-regexps (quote ("^\\(CVS\\|\\.\\|\\.\\.\\)$")))
@@ -77,7 +78,7 @@
 ; Sublime theme
 ;-----------------------------------------------------------------
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/sublime-themes-20140920.500")
-(load-theme 'wheatgrass t)
+(load-theme 'junio t)
 
 ;-----------------------------------------------------------------
 ; Indentation
@@ -197,9 +198,9 @@
 ;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-20140427.1224")
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
 (require 'yasnippet)
-(yas/global-mode 1)
+(yas-global-mode 1)
 
 ;-----------------------------------------------------------------
 ; Tabbar
@@ -400,3 +401,9 @@
 ; Remove trailing whitespace
 ;-----------------------------------------------------------------
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;-----------------------------------------------------------------
+; Company mode
+;-----------------------------------------------------------------
+(autoload 'company-mode "company" nil t)
+(add-hook 'after-init-hook 'global-company-mode)
