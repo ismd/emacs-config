@@ -9,7 +9,7 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.php?\\'" . web-mode))
 
 (setq web-mode-engines-alist
       '(("php"    . "\\.phtml\\'"))
@@ -62,9 +62,7 @@
 
 (add-to-list 'ac-sources 'ac-source-html-tag)
 (add-to-list 'ac-sources 'ac-source-html-attribute)
-(add-to-list 'ac-sources 'ac-source-html-attribute-2)
 
 (add-to-list 'web-mode-ac-sources-alist
              '("html" . (ac-source-html-tag
-                         ac-source-html-attribute
-                         ac-source-html-attribute-2)))
+                         ac-source-html-attribute)))

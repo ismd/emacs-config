@@ -25,6 +25,7 @@
  '(ecb-tip-of-the-day nil)
  '(flycheck-temp-prefix ".flycheck")
  '(less-css-lessc-options (quote ("--no-color -x")))
+ '(menu-bar-mode nil)
  '(package-archive '(("gnu" . "http://elpa.gnu.org/packages/")
                      ("melpa" . "http://melpa.milkbox.net/packages/")))
  '(scroll-conservatively 10000)
@@ -51,20 +52,12 @@
 ; Default font
 ;-----------------------------------------------------------------
 (set-frame-font "Dejavu Sans Mono-10")
-;(set-default-font "Consolas-10")
+;(set-frame-font "Consolas-11")
 
 ;-----------------------------------------------------------------
 ; Y or N instead of YES or NO
 ;-----------------------------------------------------------------
 (fset 'yes-or-no-p 'y-or-n-p)
-
-;-----------------------------------------------------------------
-; e2wm
-;-----------------------------------------------------------------
-;(add-to-list 'load-path "~/.emacs.d/elpa/window-layout-20140819.2258")
-;(require 'window-layout)
-;(add-to-list 'load-path "~/.emacs.d/elpa/e2wm-20140828.2356")
-;(require 'e2wm)
 
 ;-----------------------------------------------------------------
 ; Color theme
@@ -146,8 +139,8 @@
 ;-----------------------------------------------------------------
 ; Highlighting line
 ;-----------------------------------------------------------------
-;(global-hl-line-mode)
-;(set-face-background 'hl-line "#EEEEEE")
+;; (global-hl-line-mode)
+;; (set-face-background 'hl-line "#EEEEEE")
 
 ;-----------------------------------------------------------------
 ; Cursor type
@@ -184,11 +177,6 @@
 ; Which function
 ;-----------------------------------------------------------------
 (which-function-mode)
-
-;-----------------------------------------------------------------
-; nXhtml
-;-----------------------------------------------------------------
-;(load "~/.emacs.d/nxhtml/autostart")
 
 ;-----------------------------------------------------------------
 ; Show paren mode
@@ -240,18 +228,6 @@
       '(("WAIT". (:foreground "orange" :weight bold))))
 
 ;-----------------------------------------------------------------
-; Ide Skel
-;-----------------------------------------------------------------
-;(require 'ide-skel)
-;(partial-completion-mode)
-
-;(global-set-key [f4] 'ide-skel-proj-find-files-by-regexp)
-;(global-set-key [f5] 'ide-skel-proj-grep-files-by-regexp)
-;(global-set-key [f10] 'ide-skel-toggle-left-view-window)
-;(global-set-key [f11] 'ide-skel-toggle-bottom-view-window)
-;(global-set-key [f12] 'ide-skel-toggle-right-view-window)
-
-;-----------------------------------------------------------------
 ; Switching between windows
 ;-----------------------------------------------------------------
 (global-set-key [M-left] 'windmove-left)
@@ -299,11 +275,6 @@
 (delete-selection-mode 1)
 
 ;-----------------------------------------------------------------
-; Prevents from throwing errors
-;-----------------------------------------------------------------
-;(setq stack-trace-on-error t)
-
-;-----------------------------------------------------------------
 ; ECB
 ;-----------------------------------------------------------------
 (add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
@@ -346,51 +317,9 @@
 (setq projectile-enable-caching t)
 
 ;-----------------------------------------------------------------
-; Flymake
-;-----------------------------------------------------------------
-;; (require 'flymake)
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
-
-;; (add-to-list 'load-path "~/.emacs.d/elpa/flymake-easy-20140818.55")
-;; (add-to-list 'load-path "~/.emacs.d/elpa/flymake-css-20121104.1104")
-;; (add-to-list 'load-path "~/.emacs.d/elpa/flymake-php-20121104.1102")
-;; (add-to-list 'load-path "~/.emacs.d/elpa/flymake-python-pyflakes-20131127.6")
-;; (require 'flymake-easy)
-;; (require 'flymake-css)
-;; (require 'flymake-php)
-;; (require 'flymake-python-pyflakes)
-;; (add-hook 'css-mode-hook 'flymake-css-load)
-;; (add-hook 'php-mode-hook 'flymake-php-load)
-;; (add-hook 'php+-mode-hook 'flymake-php-load)
-;; (add-hook 'web-mode-hook 'flymake-php-load)
-;; (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
-
-;-----------------------------------------------------------------
 ; Flycheck
 ;-----------------------------------------------------------------
 (add-hook 'after-init-hook #'global-flycheck-mode)
-
-;-----------------------------------------------------------------
-; Semantic
-;-----------------------------------------------------------------
-;; (global-semantic-idle-completions-mode t)
-;; (global-semantic-decoration-mode t)
-;; (global-semantic-highlight-func-mode t)
-;; (global-semantic-show-unmatched-syntax-mode t)
-
-;; (global-ede-mode 1)
-;; (semantic-mode 1)
-
-;; (defun newline-and-indent-as-above ()
-;;   (interactive)
-;;   (let* ((cline (thing-at-point 'line))
-;;          (start (string-match "\\`[ \t]+" cline))
-;;          (end (match-end 0))
-;;          (indent (substring cline start end )))
-;;     (newline)
-;;     (insert indent)))
-
-;; (global-set-key (kbd "<C-return>") 'newline-and-indent-as-above)
 
 ;-----------------------------------------------------------------
 ; Subword mode
@@ -405,5 +334,7 @@
 ;-----------------------------------------------------------------
 ; Company mode
 ;-----------------------------------------------------------------
-(autoload 'company-mode "company" nil t)
-(add-hook 'after-init-hook 'global-company-mode)
+;(autoload 'company-mode "company" nil t)
+;(add-hook 'after-init-hook 'global-company-mode)
+
+(helm :repo "emacs-helm/helm" :fetcher github :files ("*.el" "emacs-helm.sh"))
