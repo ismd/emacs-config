@@ -37,8 +37,8 @@
 ;-----------------------------------------------------------------
 ; ac-js2
 ;-----------------------------------------------------------------
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-(setq ac-js2-evaluate-calls t)
+;; (add-hook 'js2-mode-hook 'ac-js2-mode)
+;; (setq ac-js2-evaluate-calls t)
 
 ;-----------------------------------------------------------------
 ; Skewer mode
@@ -57,12 +57,12 @@
 ;-----------------------------------------------------------------
 ; ac-html
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/packages/ac-html")
-(require 'ac-html)
+;; (add-to-list 'load-path "~/.emacs.d/packages/ac-html")
+;; (require 'ac-html)
 
-(add-to-list 'ac-sources 'ac-source-html-tag)
-(add-to-list 'ac-sources 'ac-source-html-attribute)
+;; (add-to-list 'ac-sources 'ac-source-html-tag)
+;; (add-to-list 'ac-sources 'ac-source-html-attribute)
 
-(add-to-list 'web-mode-ac-sources-alist
-             '("html" . (ac-source-html-tag
-                         ac-source-html-attribute)))
+;; (add-to-list 'web-mode-ac-sources-alist
+;;              '("html" . (ac-source-html-tag
+;;                          ac-source-html-attribute)))

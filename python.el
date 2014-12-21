@@ -13,8 +13,8 @@
 (add-to-list 'load-path "~/.emacs.d/elpa/ctable-20140304.1659")
 (add-to-list 'load-path "~/.emacs.d/elpa/python-environment-20140321.1116")
 
-(add-to-list 'load-path "~/.emacs.d/elpa/jedi-20140321.1323")
-(require 'jedi)
+;; (add-to-list 'load-path "~/.emacs.d/elpa/jedi-20140321.1323")
+;; (require 'jedi)
 
 ;; (setq jedi:server-command
 ;;       '("python" "~/.emacs.d/elpa/jedi-20140321.1323/jediepcserver.py"))

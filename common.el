@@ -8,24 +8,24 @@
  '(ac-quick-help-delay 0.5)
  '(company-dabbrev-downcase nil)
  '(create-lockfiles nil)
- '(ecb-display-default-dir-after-start nil)
- '(ecb-excluded-directories-regexps (quote ("^\\(CVS\\|\\.\\|\\.\\.\\)$")))
- '(ecb-kill-buffer-clears-history (quote auto))
- '(ecb-layout-name "leftright2")
- '(ecb-layout-window-sizes
-   (quote
-    (("leftright2"
-      (ecb-directories-buffer-name 0.09101694915254236 . 0.6440677966101694)
-      (ecb-sources-buffer-name 0.09101694915254236 . 0.3559322033898305)
-      (ecb-methods-buffer-name 0.17101694915254236 . 0.423728813559322)
-      (ecb-history-buffer-name 0.17101694915254236 . 0.576271186440678)))))
- '(ecb-options-version "2.40")
- '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
- '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|^.flycheck_\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
- '(ecb-tip-of-the-day nil)
+ ;; '(ecb-display-default-dir-after-start nil)
+ ;; '(ecb-excluded-directories-regexps (quote ("^\\(CVS\\|\\.\\|\\.\\.\\)$")))
+ ;; '(ecb-kill-buffer-clears-history (quote auto))
+ ;; '(ecb-layout-name "leftright2")
+ ;; '(ecb-layout-window-sizes
+ ;;   (quote
+ ;;    (("leftright2"
+ ;;      (ecb-directories-buffer-name 0.09101694915254236 . 0.6440677966101694)
+ ;;      (ecb-sources-buffer-name 0.09101694915254236 . 0.3559322033898305)
+ ;;      (ecb-methods-buffer-name 0.17101694915254236 . 0.423728813559322)
+ ;;      (ecb-history-buffer-name 0.17101694915254236 . 0.576271186440678)))))
+ ;; '(ecb-options-version "2.40")
+ ;; '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
+ ;; '(ecb-source-file-regexps (quote ((".*" ("\\(^#\\|^.flycheck_\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
+ ;; '(ecb-tip-of-the-day nil)
  '(flycheck-temp-prefix ".flycheck")
  '(less-css-lessc-options (quote ("--no-color -x")))
- '(menu-bar-mode nil)
+ ;; '(menu-bar-mode nil)
  '(package-archive '(("gnu" . "http://elpa.gnu.org/packages/")
                      ("melpa" . "http://melpa.milkbox.net/packages/")))
  '(scroll-conservatively 10000)
@@ -58,14 +58,6 @@
 ; Y or N instead of YES or NO
 ;-----------------------------------------------------------------
 (fset 'yes-or-no-p 'y-or-n-p)
-
-;-----------------------------------------------------------------
-; Color theme
-;-----------------------------------------------------------------
-;(add-to-list 'load-path "~/.emacs.d/elpa/color-theme-20080305.834")
-;(require 'color-theme)
-;(color-theme-initialize)
-;(color-theme-gtk-ide)
 
 ;-----------------------------------------------------------------
 ; Sublime theme
@@ -139,7 +131,7 @@
 ;-----------------------------------------------------------------
 ; Highlighting line
 ;-----------------------------------------------------------------
-;; (global-hl-line-mode)
+(global-hl-line-mode)
 ;; (set-face-background 'hl-line "#EEEEEE")
 
 ;-----------------------------------------------------------------
@@ -150,7 +142,7 @@
 ;-----------------------------------------------------------------
 ; Icomplete mode
 ;-----------------------------------------------------------------
-(icomplete-mode)
+;; (icomplete-mode)
 
 ;-----------------------------------------------------------------
 ; ido
@@ -165,7 +157,7 @@
 ;-----------------------------------------------------------------
 ; Vertical completions
 ;-----------------------------------------------------------------
-(setq completions-format 'vertical)
+;; (setq completions-format 'vertical)
 
 ;-----------------------------------------------------------------
 ; Linum mode
@@ -184,11 +176,23 @@
 (show-paren-mode)
 
 ;-----------------------------------------------------------------
+; Directories first
+;-----------------------------------------------------------------
+(setq dired-listing-switches "-al --group-directories-first")
+
+;-----------------------------------------------------------------
+; Compilation in the same buffer
+;-----------------------------------------------------------------
+(defadvice compile-goto-error (around my-compile-goto-error activate)
+  (let ((display-buffer-overriding-action '(display-buffer-reuse-window (inhibit-same-window . nil))))
+    ad-do-it))
+
+;-----------------------------------------------------------------
 ; Yasnippet
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
-(require 'yasnippet)
-(yas-global-mode 1)
+;; (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
+;; (require 'yasnippet)
+;; (yas-global-mode 1)
 
 ;-----------------------------------------------------------------
 ; Tabbar
@@ -213,12 +217,14 @@
 ;-----------------------------------------------------------------
 ; Org mode
 ;-----------------------------------------------------------------
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-(setq org-directory "~/Документы/org")
+(setq org-directory "~/ownCloud/Документы/org")
+(setq org-default-notes-file "~/ownCloud/Документы/org/my.org")
 (setq org-agenda-files (list org-directory))
 
 (setq org-todo-keywords
@@ -248,6 +254,7 @@
 (add-to-list 'ac-modes 'web-mode)
 
 (global-set-key (kbd "C-<tab>") 'auto-complete)
+(defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
 
 ;-----------------------------------------------------------------
 ; Inserting Brackets by Pairs
@@ -277,9 +284,9 @@
 ;-----------------------------------------------------------------
 ; ECB
 ;-----------------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
-(require 'ecb)
-(ecb-activate)
+;; (add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")
+;; (require 'ecb)
+;; (ecb-activate)
 
 ;-----------------------------------------------------------------
 ; epl
@@ -337,4 +344,48 @@
 ;(autoload 'company-mode "company" nil t)
 ;(add-hook 'after-init-hook 'global-company-mode)
 
-(helm :repo "emacs-helm/helm" :fetcher github :files ("*.el" "emacs-helm.sh"))
+;-----------------------------------------------------------------
+; ggtags
+;-----------------------------------------------------------------
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'php-mode 'js2-mode 'web-mode)
+              (ggtags-mode 1))))
+
+;-----------------------------------------------------------------
+; Helm
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/helm")
+(require 'helm-config)
+
+(helm-mode 1)
+;; (define-key global-map [remap find-file] 'helm-find-files)
+(define-key global-map [remap occur] 'helm-occur)
+;; (define-key global-map [remap list-buffers] 'helm-buffers-list)
+(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(unless (boundp 'completion-in-region-function)
+  (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
+  (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
+(add-hook 'kill-emacs-hook #'(lambda () (and (file-exists-p "/tmp/helm-cfg.el") (delete-file "/tmp/helm-cfg.el"))))
+
+;-----------------------------------------------------------------
+; Helm gtags
+;-----------------------------------------------------------------
+(add-to-list 'load-path "~/.emacs.d/packages/emacs-helm-gtags")
+(require 'helm-gtags)
+
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'php-mode 'js2-mode 'web-mode)
+              (helm-gtags-mode 1))))
+
+(eval-after-load "helm-gtags"
+  '(progn
+     (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
+     (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
+     ;; (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
+     (define-key helm-gtags-mode-map (kbd "M-g M-p") 'helm-gtags-parse-file)
+     (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+     (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)))
