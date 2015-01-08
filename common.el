@@ -24,8 +24,31 @@
 ;-----------------------------------------------------------------
 ; Package initialize
 ;-----------------------------------------------------------------
+(setq package-list '(auto-complete
+                     flycheck
+                     dired+
+                     ggtags
+                     helm
+                     helm-gtags
+                     js2-mode
+                     less-css-mode
+                     php-mode
+                     projectile
+                     sr-speedbar
+                     sublime-themes
+                     web-mode
+                     yasnippet
+                     ))
+
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;-----------------------------------------------------------------
 ; Inhibit startup screen
