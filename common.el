@@ -8,9 +8,10 @@
 (custom-set-variables
  '(ac-auto-show-menu 0.4)
  '(ac-quick-help-delay 0.5)
-;;  '(create-lockfiles nil)
+ '(create-lockfiles nil)
  '(flycheck-temp-prefix ".flycheck")
-;;  '(menu-bar-mode nil)
+ ;; '(menu-bar-mode nil)
+ '(require-final-newline t)
  '(scroll-conservatively 10000)
  '(tool-bar-mode nil))
 
@@ -122,16 +123,6 @@
 (setq-default cursor-type 'bar)
 
 ;-----------------------------------------------------------------
-; ido
-;-----------------------------------------------------------------
-;; (setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-
-;; (defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
-;; (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
-
-;; (ido-mode)
-
-;-----------------------------------------------------------------
 ; Linum mode
 ;-----------------------------------------------------------------
 (global-linum-mode)
@@ -151,13 +142,6 @@
 ; Directories first
 ;-----------------------------------------------------------------
 (setq dired-listing-switches "-al --group-directories-first")
-
-;-----------------------------------------------------------------
-; Compilation in the same buffer
-;-----------------------------------------------------------------
-;; (defadvice compile-goto-error (around my-compile-goto-error activate)
-;;   (let ((display-buffer-overriding-action '(display-buffer-reuse-window (inhibit-same-window . nil))))
-;;     ad-do-it))
 
 ;-----------------------------------------------------------------
 ; Yasnippet
@@ -301,6 +285,17 @@
 ;-----------------------------------------------------------------
 (sr-speedbar-open)
 
+;-----------------------------------------------------------------
+; C-tab, C-S-tab
+;-----------------------------------------------------------------
+;; (global-set-key (kbd "<C-tab>") 'history-prev-history)
+;; (global-set-key
+;;  (if (featurep 'xemacs) (kbd "<C-iso-left-tab>") (kbd "<C-S-iso-lefttab>"))
+;;  'history-next-history)
+
+;-----------------------------------------------------------------
+; Open default file
+;-----------------------------------------------------------------
 (find-file "~/ownCloud/Documents/org/my.org")
 
 (provide 'common)
