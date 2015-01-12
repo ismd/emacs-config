@@ -51,5 +51,23 @@
 ;;              '("html" . (ac-source-html-tag
 ;;                          ac-source-html-attribute)))
 
+;-----------------------------------------------------------------
+; Emmet
+;-----------------------------------------------------------------
+(add-hook 'sgml-mode-hook     'emmet-mode)
+(add-hook 'html-mode-hook     'emmet-mode)
+(add-hook 'css-mode-hook      'emmet-mode)
+(add-hook 'web-mode-hook      'emmet-mode)
+(add-hook 'less-css-mode-hook 'emmet-mode)
+
+;-----------------------------------------------------------------
+; ac-emmet
+;-----------------------------------------------------------------
+(add-hook 'sgml-mode-hook 'ac-emmet-html-setup)
+(add-hook 'html-mode-hook 'ac-emmet-css-setup)
+(add-hook 'css-mode-hook 'ac-emmet-css-setup)
+(add-hook 'web-mode-hook 'ac-emmet-css-setup)
+(add-hook 'less-css-mode-hook 'ac-emmet-css-setup)
+
 (provide 'web)
 ;;; web.el ends here

@@ -13,6 +13,8 @@
  ;; '(menu-bar-mode nil)
  '(require-final-newline t)
  '(scroll-conservatively 10000)
+ '(speedbar-show-unknown-files t)
+ '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil))
 
 ;-----------------------------------------------------------------
@@ -22,26 +24,41 @@
  '(show-paren-match ((t (:background "#483D8B" :foreground "#343434" :weight normal)))))
 
 ;-----------------------------------------------------------------
+; Common
+;-----------------------------------------------------------------
+(xterm-mouse-mode t)
+(setq inhibit-startup-screen t)
+(set-frame-font "Dejavu Sans Mono-10")
+;; (set-frame-font "Consolas-10")
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;-----------------------------------------------------------------
 ; Package initialize
 ;-----------------------------------------------------------------
-(setq package-list '(auto-complete
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(setq package-list '(ac-emmet
+                     ac-js2
+                     auto-complete
                      flycheck
                      dired+
+                     dsvn
+                     emmet-mode
                      ggtags
                      helm
                      helm-gtags
+                     jedi
                      js2-mode
                      less-css-mode
                      php-mode
                      projectile
+                     skewer-mode
                      sr-speedbar
                      sublime-themes
                      web-mode
                      yasnippet
                      ))
-
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -51,20 +68,10 @@
     (package-install package)))
 
 ;-----------------------------------------------------------------
-; Inhibit startup screen
+; Ede
 ;-----------------------------------------------------------------
-(setq inhibit-startup-screen t)
-
-;-----------------------------------------------------------------
-; Default font
-;-----------------------------------------------------------------
-(set-frame-font "Dejavu Sans Mono-10")
-;; (set-frame-font "Consolas-10")
-
-;-----------------------------------------------------------------
-; Y or N instead of YES or NO
-;-----------------------------------------------------------------
-(fset 'yes-or-no-p 'y-or-n-p)
+(global-ede-mode t)
+(ede-enable-generic-projects)
 
 ;-----------------------------------------------------------------
 ; Sublime theme
@@ -229,6 +236,7 @@
 ;-----------------------------------------------------------------
 ; Dsvn
 ;-----------------------------------------------------------------
+(require 'vc-svn)
 (autoload 'svn-status "dsvn" "Run `svn status'." t)
 (autoload 'svn-update "dsvn" "Run `svn update'." t)
 
