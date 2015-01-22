@@ -42,14 +42,17 @@
 ;-----------------------------------------------------------------
 ; ac-html
 ;-----------------------------------------------------------------
-;; (require 'ac-html)
+(add-to-list 'web-mode-ac-sources-alist
+             '("html" . (
+                         ;; attribute-value better to be first
+                         ac-source-html-attribute-value
+                         ac-source-html-tag
+                         ac-source-html-attribute)))
 
-;; (add-to-list 'ac-sources 'ac-source-html-tag)
-;; (add-to-list 'ac-sources 'ac-source-html-attribute)
-
-;; (add-to-list 'web-mode-ac-sources-alist
-;;              '("html" . (ac-source-html-tag
-;;                          ac-source-html-attribute)))
+;-----------------------------------------------------------------
+; ac-html-csswatcher
+;-----------------------------------------------------------------
+(ac-html-csswatcher-setup)
 
 ;-----------------------------------------------------------------
 ; Emmet

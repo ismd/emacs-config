@@ -221,6 +221,9 @@
 (ac-config-default)
 
 (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
+(setq ac-ignore-case 'smart)
+(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+
 (global-auto-complete-mode t)
 
 ;-----------------------------------------------------------------
@@ -271,8 +274,7 @@
 ;-----------------------------------------------------------------
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (when (derived-mode-p 'c-mode)
-              (ggtags-mode 1))))
+            (ggtags-mode 1)))
 
 ;-----------------------------------------------------------------
 ; Helm
@@ -298,8 +300,7 @@
 ;-----------------------------------------------------------------
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (when (derived-mode-p 'c-mode)
-              (helm-gtags-mode 1))))
+            (helm-gtags-mode 1)))
 
 (eval-after-load "helm-gtags"
   '(progn
@@ -314,15 +315,29 @@
 ;-----------------------------------------------------------------
 ; sr-speedbar
 ;-----------------------------------------------------------------
-(sr-speedbar-open)
+;; (sr-speedbar-open)
 
 ;-----------------------------------------------------------------
-; C-tab, C-S-tab
+; Copy filename
 ;-----------------------------------------------------------------
-;; (global-set-key (kbd "<C-tab>") 'history-prev-history)
-;; (global-set-key
-;;  (if (featurep 'xemacs) (kbd "<C-iso-left-tab>") (kbd "<C-S-iso-lefttab>"))
-;;  'history-next-history)
+(defun copy-buffer-file-name (event &optional bufName)
+  "Copy buffer file name to kill ring. If no file is associated with buffer just get buffer name."
+  (interactive "eP")
+  (save-selected-window
+    (message "bufName: %S" bufName)
+    (select-window (posn-window (event-start event)))
+    (let ((name (or (unless bufName (buffer-file-name)) (buffer-name))))
+      (message "Saved file name \"%s\" in killring." name)
+      (kill-new name)
+      name)))
+
+(define-key mode-line-buffer-identification-keymap [mode-line mouse-2] 'copy-buffer-file-name)
+(define-key mode-line-buffer-identification-keymap [mode-line S-mouse-2] '(lambda (e) (interactive "e") (copy-buffer-file-name e 't)))
+
+;-----------------------------------------------------------------
+; Display time
+;-----------------------------------------------------------------
+(display-time-mode)
 
 ;-----------------------------------------------------------------
 ; Open default file
