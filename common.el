@@ -7,6 +7,7 @@
 ;-----------------------------------------------------------------
 (custom-set-variables
  '(ac-auto-show-menu 0.4)
+ '(ac-auto-start 1)
  '(ac-quick-help-delay 0.5)
  '(create-lockfiles nil)
  '(flycheck-temp-prefix ".flycheck")
@@ -39,8 +40,11 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (setq package-list '(ac-emmet
+                     ac-html
+                     ac-html-csswatcher
                      ac-js2
                      auto-complete
+                     expand-region
                      flycheck
                      dired+
                      dsvn
@@ -338,6 +342,11 @@
 ; Display time
 ;-----------------------------------------------------------------
 (display-time-mode)
+
+;-----------------------------------------------------------------
+; Expand region
+;-----------------------------------------------------------------
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;-----------------------------------------------------------------
 ; Open default file
