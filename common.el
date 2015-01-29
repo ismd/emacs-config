@@ -47,7 +47,6 @@
                      expand-region
                      flycheck
                      dired+
-                     dsvn
                      emmet-mode
                      ggtags
                      helm
@@ -57,6 +56,7 @@
                      less-css-mode
                      php-mode
                      projectile
+                     psvn
                      skewer-mode
                      sr-speedbar
                      sublime-themes
@@ -239,13 +239,6 @@
 ; Dired+
 ;-----------------------------------------------------------------
 (toggle-diredp-find-file-reuse-dir 1)
-
-;-----------------------------------------------------------------
-; Dsvn
-;-----------------------------------------------------------------
-(require 'vc-svn)
-(autoload 'svn-status "dsvn" "Run `svn status'." t)
-(autoload 'svn-update "dsvn" "Run `svn update'." t)
 
 ;-----------------------------------------------------------------
 ; Delete selection mode
