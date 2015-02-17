@@ -6,16 +6,16 @@
 ; Variables
 ;-----------------------------------------------------------------
 (custom-set-variables
- '(ac-auto-show-menu 0.4)
- '(ac-auto-start 1)
- '(ac-quick-help-delay 0.5)
+ ;; '(ac-auto-show-menu 0.4)
+ ;; '(ac-auto-start 3)
+ ;; '(ac-quick-help-delay 0.5)
  '(create-lockfiles nil)
  '(flycheck-temp-prefix ".flycheck")
  ;; '(menu-bar-mode nil)
  '(require-final-newline t)
  '(scroll-conservatively 10000)
- '(speedbar-show-unknown-files t)
- '(sr-speedbar-right-side nil)
+ ;; '(speedbar-show-unknown-files t)
+ ;; '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil))
 
 ;-----------------------------------------------------------------
@@ -39,11 +39,13 @@
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-(setq package-list '(ac-emmet
-                     ac-html
-                     ac-html-csswatcher
-                     ac-js2
+(setq package-list '(;; ac-c-headers
+                     ;; ac-emmet
+                     ;; ac-html
+                     ;; ac-html-csswatcher
+                     ;; ac-js2
                      auto-complete
+                     company
                      expand-region
                      flycheck
                      dired+
@@ -54,6 +56,7 @@
                      jedi
                      js2-mode
                      less-css-mode
+                     magit
                      php-mode
                      projectile
                      psvn
@@ -178,11 +181,6 @@
 (setq dired-listing-switches "-al --group-directories-first")
 
 ;-----------------------------------------------------------------
-; Yasnippet
-;-----------------------------------------------------------------
-(yas-global-mode 1)
-
-;-----------------------------------------------------------------
 ; Size indication mode
 ;-----------------------------------------------------------------
 ;; (size-indication-mode)
@@ -220,15 +218,30 @@
 ;; (global-set-key [M-down] 'windmove-down)
 
 ;-----------------------------------------------------------------
+; Yasnippet
+;-----------------------------------------------------------------
+(yas-global-mode 1)
+
+;-----------------------------------------------------------------
 ; Auto complete
 ;-----------------------------------------------------------------
-(ac-config-default)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;; (ac-config-default)
 
-(defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
-(setq ac-ignore-case 'smart)
-(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+;; (defalias 'yas/current-snippet-table 'yas--get-snippet-tables)
+;; (setq ac-ignore-case 'smart)
 
-(global-auto-complete-mode t)
+;; (global-auto-complete-mode t)
+
+;; (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+;; (ac-set-trigger-key "TAB")
+;; (ac-set-trigger-key "<tab>")
+
+;-----------------------------------------------------------------
+; Company
+;-----------------------------------------------------------------
+(add-hook 'after-init-hook 'global-company-mode)
+(global-set-key (kbd "M-<tab>") 'company-complete-common)
 
 ;-----------------------------------------------------------------
 ; Inserting Brackets by Pairs
@@ -345,6 +358,16 @@
 ; Open default file
 ;-----------------------------------------------------------------
 (find-file "~/ownCloud/Documents/org/my.org")
+
+;-----------------------------------------------------------------
+; iedit
+;-----------------------------------------------------------------
+(define-key global-map (kbd "C-$") 'iedit-mode)
+
+;-----------------------------------------------------------------
+; Semantic
+;-----------------------------------------------------------------
+(semantic-mode 1)
 
 (provide 'common)
 ;;; common.el ends here

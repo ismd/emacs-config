@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+(custom-set-variables
+ '(cc-search-directories (quote ("." "/usr/include" "/usr/local/include"))))
+
 ;-----------------------------------------------------------------
 ; c++-mode for .h files
 ;-----------------------------------------------------------------
