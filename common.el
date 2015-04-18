@@ -2,6 +2,27 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Fix for EDE
+(require 'cedet)
+(require 'eieio)
+(require 'eieio-speedbar)
+(require 'eieio-opt)
+(require 'eieio-base)
+(require 'ede/source)
+(require 'ede/base)
+(require 'ede/auto)
+(require 'ede/proj)
+(require 'ede/proj-archive)
+(require 'ede/proj-aux)
+(require 'ede/proj-comp)
+(require 'ede/proj-elisp)
+(require 'ede/proj-info)
+(require 'ede/proj-misc)
+(require 'ede/proj-obj)
+(require 'ede/proj-prog)
+(require 'ede/proj-scheme)
+(require 'ede/proj-shared)
+
 ;-----------------------------------------------------------------
 ; Variables
 ;-----------------------------------------------------------------
@@ -29,56 +50,59 @@
 ;-----------------------------------------------------------------
 (xterm-mouse-mode t)
 (setq inhibit-startup-screen t)
-(set-frame-font "Dejavu Sans Mono-10")
-;; (set-frame-font "Consolas-10")
+;; (set-frame-font "Dejavu Sans Mono-11")
+(set-frame-font "Consolas-12")
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;-----------------------------------------------------------------
 ; Package initialize
 ;-----------------------------------------------------------------
+(setq cfg-var:packages '(auto-complete
+                         company
+                         expand-region
+                         flycheck
+                         dired+
+                         emmet-mode
+                         ggtags
+                         helm
+                         helm-gtags
+                         iedit
+                         jedi
+                         js2-mode
+                         less-css-mode
+                         magit
+                         php-mode
+                         projectile
+                         psvn
+                         skewer-mode
+                         sr-speedbar
+                         sublime-themes
+                         web-mode
+                         yasnippet
+                         ))
+
+(defun cfg:need-install-package ()
+  (loop for p in cfg-var:packages
+        when (not (package-installed-p p))
+        do (return t)
+        finally (return nil)))
+
+(defun cfg:install-packages ()
+  (when (cfg:need-install-package)
+    (message "%s" "Emacs is now refreshing its package database...")
+    (package-refresh-contents)
+    (message "%s" " done.")
+    (dolist (p cfg-var:packages)
+      (when (not (package-installed-p p))
+        (package-install p)))))
+
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(setq package-list '(;; ac-c-headers
-                     ;; ac-emmet
-                     ;; ac-html
-                     ;; ac-html-csswatcher
-                     ;; ac-js2
-                     auto-complete
-                     company
-                     expand-region
-                     flycheck
-                     dired+
-                     emmet-mode
-                     ggtags
-                     helm
-                     helm-gtags
-                     jedi
-                     js2-mode
-                     less-css-mode
-                     magit
-                     php-mode
-                     projectile
-                     psvn
-                     skewer-mode
-                     sr-speedbar
-                     sublime-themes
-                     web-mode
-                     yasnippet
-                     ))
-
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
 
 ;-----------------------------------------------------------------
 ; Ede
 ;-----------------------------------------------------------------
 (global-ede-mode t)
-(ede-enable-generic-projects)
 
 ;-----------------------------------------------------------------
 ; Sublime theme
@@ -102,6 +126,7 @@
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-follow-mouse 't)
 (setq scroll-step 1)
+(setq scroll-margin 3)
 
 ;-----------------------------------------------------------------
 ; Russian computer
@@ -241,7 +266,8 @@
 ; Company
 ;-----------------------------------------------------------------
 (add-hook 'after-init-hook 'global-company-mode)
-(global-set-key (kbd "M-<tab>") 'company-complete-common)
+;; (global-set-key (kbd "M-<tab>") 'company-complete-common)
+(global-set-key [(control tab)] 'company-complete-common)
 
 ;-----------------------------------------------------------------
 ; Inserting Brackets by Pairs
@@ -325,7 +351,7 @@
 ;-----------------------------------------------------------------
 ; sr-speedbar
 ;-----------------------------------------------------------------
-;; (sr-speedbar-open)
+(sr-speedbar-open)
 
 ;-----------------------------------------------------------------
 ; Copy filename
@@ -368,6 +394,24 @@
 ; Semantic
 ;-----------------------------------------------------------------
 (semantic-mode 1)
+;; (global-set-key [(control tab)] 'semantic-ia-complete-symbol)
+(semantic-load-enable-excessive-code-helpers)
+
+(global-semantic-idle-scheduler-mode)
+(global-semantic-idle-completions-mode)
+(global-semantic-decoration-mode)
+(global-semantic-highlight-func-mode)
+(global-semantic-show-unmatched-syntax-mode)
+
+;-----------------------------------------------------------------
+; C-tab switchs to a next window
+;-----------------------------------------------------------------
+;; (global-set-key [(control tab)] 'other-window)
+
+;-----------------------------------------------------------------
+; Tabbar
+;-----------------------------------------------------------------
+(tabbar-mode t)
 
 (provide 'common)
 ;;; common.el ends here
