@@ -39,6 +39,8 @@
  ;; '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil))
 
+(setq load-path (cons "~/.emacs.d/packages" load-path))
+
 ;-----------------------------------------------------------------
 ; Faces
 ;-----------------------------------------------------------------
@@ -57,7 +59,7 @@
 ;-----------------------------------------------------------------
 ; Package initialize
 ;-----------------------------------------------------------------
-(setq cfg-var:packages '(auto-complete
+(setq cfg-var:packages '(ac-emmet
                          company
                          expand-region
                          flycheck
@@ -77,6 +79,7 @@
                          skewer-mode
                          sr-speedbar
                          sublime-themes
+                         tabbar
                          web-mode
                          yasnippet
                          ))
@@ -381,11 +384,6 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 ;-----------------------------------------------------------------
-; Open default file
-;-----------------------------------------------------------------
-(find-file "~/ownCloud/Documents/org/my.org")
-
-;-----------------------------------------------------------------
 ; iedit
 ;-----------------------------------------------------------------
 (define-key global-map (kbd "C-$") 'iedit-mode)
@@ -395,7 +393,6 @@
 ;-----------------------------------------------------------------
 (semantic-mode 1)
 ;; (global-set-key [(control tab)] 'semantic-ia-complete-symbol)
-(semantic-load-enable-excessive-code-helpers)
 
 (global-semantic-idle-scheduler-mode)
 (global-semantic-idle-completions-mode)
@@ -412,6 +409,17 @@
 ; Tabbar
 ;-----------------------------------------------------------------
 (tabbar-mode t)
+
+;-----------------------------------------------------------------
+; Move lines and regions
+;-----------------------------------------------------------------
+(require 'move-lines)
+(move-lines-binding)
+
+;-----------------------------------------------------------------
+; Open default file
+;-----------------------------------------------------------------
+(find-file "~/ownCloud/Documents/org/my.org")
 
 (provide 'common)
 ;;; common.el ends here
