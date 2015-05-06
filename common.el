@@ -35,6 +35,7 @@
  ;; '(menu-bar-mode nil)
  '(require-final-newline t)
  '(scroll-conservatively 10000)
+ '(show-trailing-whitespace t)
  ;; '(speedbar-show-unknown-files t)
  ;; '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil))
@@ -238,6 +239,12 @@
       '(("WAIT". (:foreground "orange" :weight bold))))
 
 ;-----------------------------------------------------------------
+; Move lines and regions
+;-----------------------------------------------------------------
+(require 'move-lines)
+(move-lines-binding)
+
+;-----------------------------------------------------------------
 ; Switching between windows
 ;-----------------------------------------------------------------
 (global-set-key [M-left] 'windmove-left)
@@ -409,12 +416,6 @@
 ; Tabbar
 ;-----------------------------------------------------------------
 (tabbar-mode t)
-
-;-----------------------------------------------------------------
-; Move lines and regions
-;-----------------------------------------------------------------
-(require 'move-lines)
-(move-lines-binding)
 
 ;-----------------------------------------------------------------
 ; Open default file
